@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tgs.BrandGameCredits", "Tgs.BrandGameCredits\Tgs.BrandGameCredits.csproj", "{A27ED779-0B57-4440-B1D5-E1DAF9DF4177}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tgs.BrandGameCredits.Core", "Tgs.BrandGameCredits.Core\Tgs.BrandGameCredits.Core.csproj", "{2AF7B5AB-652A-483E-BF4D-4DB2FCBB8761}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tgs.BrandGameCredits.Repositories", "Tgs.BrandGameCredits.Repositories\Tgs.BrandGameCredits.Repositories.csproj", "{6CDB7974-71C1-4FB0-942B-B77984266B5B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tgs.BrandGameCredits.Core.UnitTest", "Tgs.BrandGameCredits.Core.UnitTest\Tgs.BrandGameCredits.Core.UnitTest.csproj", "{1227BF9D-2413-440B-92A0-FDCE68362CA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tgs.BrandGameCredits.Client", "Tgs.BrandGameCredits.Client\Tgs.BrandGameCredits.Client.csproj", "{947098EB-568E-4218-9012-8888F1D56D41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tgs.BrandGameCredits.Common", "Tgs.BrandGameCredits.Common\Tgs.BrandGameCredits.Common.csproj", "{2FF87222-6737-4D8E-90EB-FFC3F0D92C9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tgs.BrandGameCredits.IntegrationUnitTest", "Tgs.BrandGameCredits.IntegrationUnitTest\Tgs.BrandGameCredits.IntegrationUnitTest.csproj", "{3C7DDA97-DC37-49BB-99B4-FAE0F24F1F52}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A27ED779-0B57-4440-B1D5-E1DAF9DF4177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A27ED779-0B57-4440-B1D5-E1DAF9DF4177}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A27ED779-0B57-4440-B1D5-E1DAF9DF4177}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A27ED779-0B57-4440-B1D5-E1DAF9DF4177}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AF7B5AB-652A-483E-BF4D-4DB2FCBB8761}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AF7B5AB-652A-483E-BF4D-4DB2FCBB8761}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AF7B5AB-652A-483E-BF4D-4DB2FCBB8761}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AF7B5AB-652A-483E-BF4D-4DB2FCBB8761}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CDB7974-71C1-4FB0-942B-B77984266B5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CDB7974-71C1-4FB0-942B-B77984266B5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CDB7974-71C1-4FB0-942B-B77984266B5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CDB7974-71C1-4FB0-942B-B77984266B5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1227BF9D-2413-440B-92A0-FDCE68362CA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1227BF9D-2413-440B-92A0-FDCE68362CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1227BF9D-2413-440B-92A0-FDCE68362CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1227BF9D-2413-440B-92A0-FDCE68362CA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{947098EB-568E-4218-9012-8888F1D56D41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{947098EB-568E-4218-9012-8888F1D56D41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{947098EB-568E-4218-9012-8888F1D56D41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{947098EB-568E-4218-9012-8888F1D56D41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FF87222-6737-4D8E-90EB-FFC3F0D92C9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FF87222-6737-4D8E-90EB-FFC3F0D92C9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FF87222-6737-4D8E-90EB-FFC3F0D92C9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FF87222-6737-4D8E-90EB-FFC3F0D92C9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C7DDA97-DC37-49BB-99B4-FAE0F24F1F52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C7DDA97-DC37-49BB-99B4-FAE0F24F1F52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C7DDA97-DC37-49BB-99B4-FAE0F24F1F52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C7DDA97-DC37-49BB-99B4-FAE0F24F1F52}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {257146FB-D2E8-418E-8842-3CAED7AE04F7}
+	EndGlobalSection
+EndGlobal
