@@ -1,11 +1,12 @@
-﻿using Tgs.ServiceUtility;
+﻿using Tgs.BrandGameCredits.Handler.Common;
+using Tgs.ServiceUtility;
 
 namespace Tgs.BrandGameCredits.Core.ApplicationServices;
 
 internal class GameCreditGetCurrentGetService(
     IBrandRepository brandRepository,
     IBrandGameCreditRepository brandGameCreditRepository,
-    IComputingUtnsil computingUtnsil) : IGetService<GameCreditGetCurrentQuery, GameCreditResult?>
+    IBrandGameCreditComputingUtnsil computingUtnsil) : IGetService<GameCreditGetCurrentQuery, GameCreditResult?>
 {
     public async ValueTask<GameCreditResult?> GetAsync(GameCreditGetCurrentQuery query, CancellationToken cancellationToken = default)
     {

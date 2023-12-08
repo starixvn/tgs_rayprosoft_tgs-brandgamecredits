@@ -1,13 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Tgs.BrandGameCredits.Core;
 using Tgs.BrandGameCredits.Core.Models;
+using Tgs.BrandGameCredits.Handler.Common;
 using Tgs.BrandGameCredits.Repositories.Entities;
 
 namespace Tgs.BrandGameCredits.Repositories;
 
 internal class BrandGameCreditRepository(TgsContext context,
     ISystemClock systemClock,
-    IGameCreditTimeUtnsil timeUtnsil) : IBrandGameCreditRepository
+    IBrandGameCreditTimeUtnsil timeUtnsil) : IBrandGameCreditRepository
 {
     public async ValueTask<GameCreditInfo?> GetCurrentAsync(Guid brandId, CancellationToken cancellationToken = default)
     {

@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using Tgs.BrandGameCredits.Core.Models;
+using Tgs.BrandGameCredits.Handler.Common;
 using Tgs.ServiceUtility;
 
 namespace Tgs.BrandGameCredits.Core.ApplicationServices;
@@ -7,7 +8,7 @@ namespace Tgs.BrandGameCredits.Core.ApplicationServices;
 internal class GameCreditQueryService(
     IBrandRepository brandRepository,
     IBrandGameCreditRepository brandGameCreditRepository,
-    IComputingUtnsil computingUtnsil) : IQueryService<GameCreditQuery, GameCreditResult>
+    IBrandGameCreditComputingUtnsil computingUtnsil) : IQueryService<GameCreditQuery, GameCreditResult>
 {
     public async IAsyncEnumerable<GameCreditResult> QueryAsync(GameCreditQuery query, [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {

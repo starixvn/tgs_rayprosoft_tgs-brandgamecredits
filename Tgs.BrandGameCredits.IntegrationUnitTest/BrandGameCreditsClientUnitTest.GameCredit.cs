@@ -124,7 +124,6 @@ public partial class BrandGameCreditsClientUnitTest
         Assert.False(actual.Any());
     }
 
-
     [Fact]
     public async Task GameCredit_Get_Current()
     {

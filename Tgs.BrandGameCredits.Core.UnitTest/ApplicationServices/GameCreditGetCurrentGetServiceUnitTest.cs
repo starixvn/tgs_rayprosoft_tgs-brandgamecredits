@@ -1,6 +1,8 @@
 ﻿using NSubstitute;
 using Tgs.BrandGameCredits.Core.ApplicationServices;
 using Tgs.BrandGameCredits.Core.Models;
+using Tgs.BrandGameCredits.Handler.Common;
+using Tgs.BrandGameCredits.Handler.Common.Models;
 
 namespace Tgs.BrandGameCredits.Core.UnitTest.ApplicationServices;
 
@@ -11,7 +13,7 @@ public class GameCreditGetCurrentGetServiceUnitTest
     {
         var fakeBrandRepository = Substitute.For<IBrandRepository>();
         var fakeBrandGameCreditRepository = Substitute.For<IBrandGameCreditRepository>();
-        var fakeComputingUtnsil = Substitute.For<IComputingUtnsil>();
+        var fakeComputingUtnsil = Substitute.For<IBrandGameCreditComputingUtnsil>();
 
         var query = new GameCreditGetCurrentQuery(
             BrandCode: "GPI");

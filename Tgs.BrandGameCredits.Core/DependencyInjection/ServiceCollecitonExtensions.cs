@@ -12,7 +12,6 @@ public static class ServiceCollecitonExtensions
             Assembly.GetExecutingAssembly(),
             ServiceLifetime.Transient)
         .AddSerialNumberGenerator()
-        .AddSingleton<ISystemClock, SystemClock>()
-        .AddSingleton<IGameCreditTimeUtnsil, GameCreditTimeUtnsil>()
-        .AddSingleton<IComputingUtnsil, ComputingUtnsil>();
+        .AddBrandGameCreditsHandlerCommon()
+        .AddSingleton<ISystemClock, SystemClock>();
 }
