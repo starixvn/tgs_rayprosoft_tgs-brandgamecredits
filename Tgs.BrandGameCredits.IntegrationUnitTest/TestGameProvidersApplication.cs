@@ -20,7 +20,8 @@ internal class TestGameProvidersApplication(Action<IWebHostBuilder>? webHostConf
                         exporterOptions =>
                         {
                             exporterOptions.TimeoutMilliseconds = 0;
-                        }));
+                        }))
+                .AddFakeNatsMessageQueue();
             });
 
         webHostConfigure?.Invoke(builder);
