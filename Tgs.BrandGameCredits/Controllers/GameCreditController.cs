@@ -7,6 +7,7 @@ using Tgs.BrandGameCredits.Core.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Tgs.BrandGameCredits.Repositories.Entities;
 using Tgs.BrandGameCredits.Common.Models;
+using Tgs.BrandGameCredits.Common;
 
 namespace Tgs.BrandGameCredits.Controllers;
 
@@ -58,6 +59,7 @@ public class GameCreditController : ControllerBase
                 CreditUsedPer: result.CreditUsedPer,
                 CreditAvailable: result.CreditAvailable,
                 CreditAvailablePer: result.CreditAvailablePer,
+                CreditRiskType: (GameCreditRiskTypes)result.CreditRiskType,
                 CreatedOn: result.CreatedOn,
                 UpdatedOn: result.UpdatedOn);
         }
@@ -99,6 +101,7 @@ public class GameCreditController : ControllerBase
                 CreditUsedPer: result.CreditUsedPer,
                 CreditAvailable: result.CreditAvailable,
                 CreditAvailablePer: result.CreditAvailablePer,
+                CreditRiskType: (GameCreditRiskTypes)result.CreditRiskType,
                 CreatedOn: result.CreatedOn,
                 UpdatedOn: result.UpdatedOn);
     }

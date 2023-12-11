@@ -6,7 +6,8 @@ namespace Tgs.BrandGameCredits.Core.ApplicationServices;
 internal class GameCreditGetCurrentGetService(
     IBrandRepository brandRepository,
     IBrandGameCreditRepository brandGameCreditRepository,
-    IBrandGameCreditComputingUtnsil computingUtnsil) : IGetService<GameCreditGetCurrentQuery, GameCreditResult?>
+    IBrandGameCreditComputingUtnsil computingUtnsil,
+    IBrandGameCreditRiskUtnsil riskUtnsil) : IGetService<GameCreditGetCurrentQuery, GameCreditResult?>
 {
     public async ValueTask<GameCreditResult?> GetAsync(GameCreditGetCurrentQuery query, CancellationToken cancellationToken = default)
     {
@@ -24,7 +25,17 @@ internal class GameCreditGetCurrentGetService(
             return null;
         }
 
-        var creditCalculationInfo = computingUtnsil.CreditCalculation(info.InitialAmount, info.CreditAmount, info.DebitAmount, info.ProfitAmount);
+        var creditCalculationInfo = computingUtnsil.CreditCalculation(
+            initialAmount: info.InitialAmount,
+            creditAmount: info.CreditAmount,
+            debitAmount: info.DebitAmount,
+            profitAmount: info.ProfitAmount);
+
+        var creditRiskType = await riskUtnsil.GetRiskTypeAsync(
+            brandId: brandInfo.BrandId,
+            creditUsedPer: creditCalculationInfo.CreditUsedPer,
+            cancellationToken: cancellationToken)
+            .ConfigureAwait(false);
 
         return new GameCreditResult(
             ResellerId: brandInfo.ResellerId,
@@ -43,6 +54,7 @@ internal class GameCreditGetCurrentGetService(
             CreditUsedPer: creditCalculationInfo.CreditUsedPer,
             CreditAvailable: creditCalculationInfo.CreditAvailable,
             CreditAvailablePer: creditCalculationInfo.CreditAvailablePer,
+            CreditRiskType: creditRiskType,
             CreatedOn: info.CreatedOn,
             UpdatedOn: info.UpdatedOn);
     }

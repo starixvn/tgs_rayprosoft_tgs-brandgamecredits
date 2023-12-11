@@ -17,5 +17,6 @@ public static class ServiceCollecitonExtensions
         .AddScoped<IDbConnection, NpgsqlConnection>((sp) => (NpgsqlConnection)sp.GetRequiredService<TgsContext>().Database.GetDbConnection())
         .AddTransient<IBrandGameCreditRepository, BrandGameCreditRepository>()
         .AddTransient<IBrandGameCreditTxnRepository, BrandGameCreditTxnRepository>()
-        .AddTransient<IBrandRepository, BrandRepository>();
+        .AddTransient<IBrandRepository, BrandRepository>()
+        .AddTransient<IBrandGameCreditSuspSettingRepository, BrandGameCreditSuspSettingRepository>();
 }

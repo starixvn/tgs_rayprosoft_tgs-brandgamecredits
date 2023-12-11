@@ -13,5 +13,6 @@ public static class ServiceCollecitonExtensions
             ServiceLifetime.Transient)
         .AddSerialNumberGenerator()
         .AddBrandGameCreditsHandlerCommon()
-        .AddSingleton<ISystemClock, SystemClock>();
+        .AddSingleton<ISystemClock, SystemClock>()
+        .AddTransient<IBrandGameCreditRiskUtnsil, BrandGameCreditRiskUtnsil>();
 }

@@ -23,5 +23,6 @@ public record GameCredit(
     decimal CreditUsedPer,
     decimal CreditAvailable,
     decimal CreditAvailablePer,
+    GameCreditRiskTypes CreditRiskType,
     DateTimeOffset CreatedOn,
     DateTimeOffset UpdatedOn);

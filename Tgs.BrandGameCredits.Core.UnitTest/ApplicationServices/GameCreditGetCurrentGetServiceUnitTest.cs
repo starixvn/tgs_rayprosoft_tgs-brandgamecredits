@@ -14,6 +14,7 @@ public class GameCreditGetCurrentGetServiceUnitTest
         var fakeBrandRepository = Substitute.For<IBrandRepository>();
         var fakeBrandGameCreditRepository = Substitute.For<IBrandGameCreditRepository>();
         var fakeComputingUtnsil = Substitute.For<IBrandGameCreditComputingUtnsil>();
+        var fakeRiskUtnsil = Substitute.For<IBrandGameCreditRiskUtnsil>();
 
         var query = new GameCreditGetCurrentQuery(
             BrandCode: "GPI");
@@ -60,10 +61,18 @@ public class GameCreditGetCurrentGetServiceUnitTest
             profitAmount: Arg.Is(gameCreditInfo.ProfitAmount))
             .Returns(creditCalculationInfo);
 
+        var riskType = BrandGameCreditRiskTypes.NormalRisk;
+        _ = fakeRiskUtnsil.GetRiskTypeAsync(
+            brandId: Arg.Is(brandInfo.BrandId),
+            creditUsedPer: Arg.Is(32.6733m),
+            cancellationToken: Arg.Any<CancellationToken>())
+            .Returns(riskType);
+
         var service = new GameCreditGetCurrentGetService(
             fakeBrandRepository,
             fakeBrandGameCreditRepository,
-            fakeComputingUtnsil);
+            fakeComputingUtnsil,
+            fakeRiskUtnsil);
 
         var actual = await service.GetAsync(query);
 
@@ -84,6 +93,7 @@ public class GameCreditGetCurrentGetServiceUnitTest
         Assert.Equal(32.6733m, actual.CreditUsedPer);
         Assert.Equal(68m, actual.CreditAvailable);
         Assert.Equal(67.3267m, actual.CreditAvailablePer);
+        Assert.Equal(BrandGameCreditRiskTypes.NormalRisk, actual.CreditRiskType);
         Assert.Equal(DateTimeOffset.Parse("2023-12-06T09:19:50.010516+00:00"), actual.CreatedOn);
         Assert.Equal(DateTimeOffset.Parse("2023-12-07T10:38:10.350982+00:00"), actual.UpdatedOn);
     }

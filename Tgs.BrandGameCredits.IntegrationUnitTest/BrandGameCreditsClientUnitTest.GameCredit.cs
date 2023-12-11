@@ -7,7 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 using Tgs.BrandGameCredits.Client;
+using Tgs.BrandGameCredits.Common;
 using Tgs.BrandGameCredits.Common.Models;
+using Tgs.BrandGameCredits.Core;
 using Tgs.BrandGameCredits.Core.ApplicationServices;
 using Tgs.ServiceUtility;
 
@@ -49,6 +51,7 @@ public partial class BrandGameCreditsClientUnitTest
                         CreditUsedPer: 32.6733m,
                         CreditAvailable: 68m,
                         CreditAvailablePer: 67.3267m,
+                        CreditRiskType: BrandGameCreditRiskTypes.NormalRisk,
                         CreatedOn: DateTimeOffset.Parse("2023-12-06T09:19:50.010516+00:00"),
                         UpdatedOn: DateTimeOffset.Parse("2023-12-07T10:38:10.350982+00:00")) }.ToAsyncEnumerable());
 
@@ -84,6 +87,7 @@ public partial class BrandGameCreditsClientUnitTest
         Assert.Equal(32.6733m, actual.First().CreditUsedPer);
         Assert.Equal(68m, actual.First().CreditAvailable);
         Assert.Equal(67.3267m, actual.First().CreditAvailablePer);
+        Assert.Equal(GameCreditRiskTypes.NormalRisk, actual.First().CreditRiskType);
         Assert.Equal(DateTimeOffset.Parse("2023-12-06T09:19:50.010516+00:00"), actual.First().CreatedOn);
         Assert.Equal(DateTimeOffset.Parse("2023-12-07T10:38:10.350982+00:00"), actual.First().UpdatedOn);
     }
@@ -157,6 +161,7 @@ public partial class BrandGameCreditsClientUnitTest
                         CreditUsedPer: 32.6733m,
                         CreditAvailable: 68m,
                         CreditAvailablePer: 67.3267m,
+                        BrandGameCreditRiskTypes.NormalRisk,
                         CreatedOn: DateTimeOffset.Parse("2023-12-06T09:19:50.010516+00:00"),
                         UpdatedOn: DateTimeOffset.Parse("2023-12-07T10:38:10.350982+00:00")));
 
@@ -189,6 +194,7 @@ public partial class BrandGameCreditsClientUnitTest
         Assert.Equal(32.6733m, actual.CreditUsedPer);
         Assert.Equal(68m, actual.CreditAvailable);
         Assert.Equal(67.3267m, actual.CreditAvailablePer);
+        Assert.Equal(GameCreditRiskTypes.NormalRisk, actual.CreditRiskType);
         Assert.Equal(DateTimeOffset.Parse("2023-12-06T09:19:50.010516+00:00"), actual.CreatedOn);
         Assert.Equal(DateTimeOffset.Parse("2023-12-07T10:38:10.350982+00:00"), actual.UpdatedOn);
     }
