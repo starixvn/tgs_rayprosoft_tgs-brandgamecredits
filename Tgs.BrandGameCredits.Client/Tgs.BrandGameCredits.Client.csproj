@@ -7,7 +7,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Version>0.0.3</Version>
+		<Version>0.0.4</Version>
 		<Authors>Raypro</Authors>
 		<RootNamespace>Tgs.BrandGameCredits.Client</RootNamespace>
 		<PackageId>Tgs.BrandGameCredits.Client</PackageId>
@@ -29,7 +29,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Tgs.BrandGameCredits.Common\Tgs.BrandGameCredits.Common.csproj" />
+		<ProjectReference Include="..\Tgs.BrandGameCredits.Common\Tgs.BrandGameCredits.Common.csproj">
+		  <PrivateAssets>all</PrivateAssets>
+		</ProjectReference>
 	</ItemGroup>
 
 </Project>
