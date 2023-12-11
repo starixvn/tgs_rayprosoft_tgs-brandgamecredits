@@ -6,7 +6,7 @@ using OpenTelemetry.Exporter;
 
 namespace Tgs.BrandGameCredits.IntegrationUnitTest;
 
-internal class TestGameProvidersApplication(Action<IWebHostBuilder>? webHostConfigure = null) : WebApplicationFactory<Program>
+internal class TestBrandGameCreditsApplication(Action<IWebHostBuilder>? webHostConfigure = null) : WebApplicationFactory<Program>
 {
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {

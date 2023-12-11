@@ -29,7 +29,7 @@ public partial class BrandGameCreditsClientUnitTest
         var pageNumber = 1;
         var pageSize = 20;
 
-        var web = new TestGameProvidersApplication(builder =>
+        var web = new TestBrandGameCreditsApplication(builder =>
         {
             _ = builder.ConfigureServices(services =>
             {
@@ -111,7 +111,7 @@ public partial class BrandGameCreditsClientUnitTest
         var pageNumber = 1;
         var pageSize = 20;
 
-        var web = new TestGameProvidersApplication(builder =>
+        var web = new TestBrandGameCreditsApplication(builder =>
         {
             _ = builder.ConfigureServices(services =>
             {
@@ -193,7 +193,7 @@ public partial class BrandGameCreditsClientUnitTest
         var pageNumber = 1;
         var pageSize = 20;
 
-        var web = new TestGameProvidersApplication(builder =>
+        var web = new TestBrandGameCreditsApplication(builder =>
         {
             _ = builder.ConfigureServices(services =>
             {
@@ -243,7 +243,7 @@ public partial class BrandGameCreditsClientUnitTest
         var endOn = new DateTimeOffset(2023, 12, 9, 00, 00, 00, TimeSpan.FromHours(8));
         var type = GameCreditTxnTypes.Credit;
 
-        var web = new TestGameProvidersApplication(builder =>
+        var web = new TestBrandGameCreditsApplication(builder =>
         {
             _ = builder.ConfigureServices(services =>
             {
@@ -287,7 +287,7 @@ public partial class BrandGameCreditsClientUnitTest
         var endOn = new DateTimeOffset(2023, 12, 9, 00, 00, 00, TimeSpan.FromHours(8));
         var type = (GameCreditTxnTypes?)null;
 
-        var web = new TestGameProvidersApplication(builder =>
+        var web = new TestBrandGameCreditsApplication(builder =>
         {
             _ = builder.ConfigureServices(services =>
             {
@@ -331,7 +331,7 @@ public partial class BrandGameCreditsClientUnitTest
         var endOn = new DateTimeOffset(2023, 12, 9, 00, 00, 00, TimeSpan.FromHours(8));
         var type = GameCreditTxnTypes.Credit;
 
-        var web = new TestGameProvidersApplication(builder =>
+        var web = new TestBrandGameCreditsApplication(builder =>
         {
             _ = builder.ConfigureServices(services =>
             {
@@ -381,7 +381,7 @@ public partial class BrandGameCreditsClientUnitTest
         var createdUserId = Guid.Parse("50ce61eb-8c9d-4f84-3cf6-08d9262ce1a5");
         var createdUsername = "admin.enabled";
 
-        var web = new TestGameProvidersApplication(builder =>
+        var web = new TestBrandGameCreditsApplication(builder =>
         {
             _ = builder.ConfigureServices(async services =>
             {
@@ -435,7 +435,7 @@ public partial class BrandGameCreditsClientUnitTest
         var createdUserId = Guid.Parse("50ce61eb-8c9d-4f84-3cf6-08d9262ce1a5");
         var createdUsername = "admin.enabled";
 
-        var web = new TestGameProvidersApplication(builder =>
+        var web = new TestBrandGameCreditsApplication(builder =>
         {
             _ = builder.ConfigureServices(async services =>
             {

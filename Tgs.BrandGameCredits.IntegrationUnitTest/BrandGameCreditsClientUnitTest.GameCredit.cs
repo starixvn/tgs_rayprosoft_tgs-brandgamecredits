@@ -20,7 +20,7 @@ public partial class BrandGameCreditsClientUnitTest
     {
         var brandCode = "GPI";
 
-        var web = new TestGameProvidersApplication(builder =>
+        var web = new TestBrandGameCreditsApplication(builder =>
         {
             _ = builder.ConfigureServices(services =>
             {
@@ -93,7 +93,7 @@ public partial class BrandGameCreditsClientUnitTest
     {
         var brandCode = "GPI";
 
-        var web = new TestGameProvidersApplication(builder =>
+        var web = new TestBrandGameCreditsApplication(builder =>
         {
             _ = builder.ConfigureServices(services =>
             {
@@ -129,7 +129,7 @@ public partial class BrandGameCreditsClientUnitTest
     {
         var brandCode = "GPI";
 
-        var web = new TestGameProvidersApplication(builder =>
+        var web = new TestBrandGameCreditsApplication(builder =>
         {
             _ = builder.ConfigureServices(services =>
             {
@@ -198,7 +198,7 @@ public partial class BrandGameCreditsClientUnitTest
     {
         var brandCode = "GPI";
 
-        var web = new TestGameProvidersApplication(builder =>
+        var web = new TestBrandGameCreditsApplication(builder =>
         {
             _ = builder.ConfigureServices(services =>
             {
