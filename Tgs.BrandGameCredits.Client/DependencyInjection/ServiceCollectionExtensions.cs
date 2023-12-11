@@ -5,7 +5,7 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddGameProvidersClient(
+    public static IServiceCollection AddBrandGameCreditsClient(
         this IServiceCollection services,
         Action<BrandGameCreditsClientOptions, IServiceProvider> configure)
         =>
