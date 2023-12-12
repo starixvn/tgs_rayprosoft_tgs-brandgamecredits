@@ -4,9 +4,9 @@ namespace Tgs.BrandGameCredits.Core;
 
 public interface IBrandGameCreditSuspSettingRepository
 {
-    public ValueTask<BrandGameCreditSuspSettingInfo?> GetAsync(Guid brandId, CancellationToken cancellationToken = default);
+    public ValueTask<GameCreditSuspSettingInfo?> GetAsync(Guid brandId, CancellationToken cancellationToken = default);
 
-    public ValueTask AddAsync(BrandGameCreditSuspSettingAdd source, CancellationToken cancellationToken = default);
+    public ValueTask AddAsync(GameCreditSuspSettingAdd source, CancellationToken cancellationToken = default);
 
-    public ValueTask UpdateAsync(BrandGameCreditSuspSettingUpdate source, CancellationToken cancellationToken = default);
+    public ValueTask UpdateAsync(GameCreditSuspSettingUpdate source, CancellationToken cancellationToken = default);
 }

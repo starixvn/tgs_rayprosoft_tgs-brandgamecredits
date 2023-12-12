@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using Tgs.BrandGameCredits.Core.Expansions;
 using Tgs.BrandGameCredits.Core.Models;
 using Tgs.ServiceUtility;
 
@@ -26,7 +27,7 @@ internal class GameCreditTxnQueryService(
             .ToArrayAsync(
             cancellationToken: cancellationToken)
             .ConfigureAwait(false)
-            ?? Enumerable.Empty<BrandGameCreditTxnInfo>();
+            ?? Enumerable.Empty<GameCreditTxnInfo>();
 
         if (!infos.Any())
         {
@@ -47,7 +48,7 @@ internal class GameCreditTxnQueryService(
                 Money: info.Money,
                 Amount: info.Amount,
                 Remark: info.Remark,
-                Expansions: info.Expansions,
+                Expansions: info.Expansions.ToJsonNode(),
                 CreatedUserId: info.CreatedUserId,
                 CreatedUsername: info.CreatedUsername,
                 CreatedOn: info.CreatedOn);

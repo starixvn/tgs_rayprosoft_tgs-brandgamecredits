@@ -7,7 +7,7 @@ namespace Tgs.BrandGameCredits.Repositories;
 
 internal class BrandGameCreditSuspSettingRepository(TgsContext context) : IBrandGameCreditSuspSettingRepository
 {
-    public async ValueTask AddAsync(BrandGameCreditSuspSettingAdd source, CancellationToken cancellationToken = default)
+    public async ValueTask AddAsync(GameCreditSuspSettingAdd source, CancellationToken cancellationToken = default)
     {
         var entity = new BrandGameCreditSuspSetting
         {
@@ -33,10 +33,10 @@ internal class BrandGameCreditSuspSettingRepository(TgsContext context) : IBrand
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BrandGameCreditSuspSettingInfo?> GetAsync(Guid brandId, CancellationToken cancellationToken = default)
+    public async ValueTask<GameCreditSuspSettingInfo?> GetAsync(Guid brandId, CancellationToken cancellationToken = default)
     => await context.BrandGameCreditSuspSettings
         .Where(predicate: predicate => predicate.BrandId == brandId)
-        .Select(selector: selector => new BrandGameCreditSuspSettingInfo(
+        .Select(selector: selector => new GameCreditSuspSettingInfo(
             selector.BrandId,
             selector.LowRisk,
             selector.LowNotification,
@@ -53,7 +53,7 @@ internal class BrandGameCreditSuspSettingRepository(TgsContext context) : IBrand
         .FirstOrDefaultAsync(cancellationToken: cancellationToken)
         .ConfigureAwait(false);
 
-    public async ValueTask UpdateAsync(BrandGameCreditSuspSettingUpdate source, CancellationToken cancellationToken = default)
+    public async ValueTask UpdateAsync(GameCreditSuspSettingUpdate source, CancellationToken cancellationToken = default)
     {
         var entity = await context.BrandGameCreditSuspSettings
             .SingleAsync(predicate: predicate => predicate.BrandId == source.BrandId,

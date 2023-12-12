@@ -72,6 +72,7 @@ internal class BrandGameCreditsClient(HttpClient httpClient) : IBrandGameCredits
             .FirstOrDefaultAsync(cancellationToken: cancellationToken)
             ?? throw new NullReferenceException($"This brand does not exist.{brandCode}");
     }
+
     public async ValueTask GameCreditSuspSettingMergeAsync(string brandCode, decimal lowRisk, JsonNode lowNotification, decimal moderateRisk, JsonNode moderateNotification, decimal highRisk, JsonNode highNotification, JsonNode manualNotification, CancellationToken cancellationToken = default)
     {
         var add = new GameCreditSuspSettingMerge

@@ -22,7 +22,7 @@ public partial class BrandGameCreditsClientUnitTest
 
         var web = new TestBrandGameCreditsApplication(builder =>
         {
-            _ = builder.ConfigureServices(async services =>
+            _ = builder.ConfigureServices(services =>
             {
                 var fakeService = Substitute.For<IGetService<GameCreditSuspSettingGetQuery, GameCreditSuspSettingResult>>();
 

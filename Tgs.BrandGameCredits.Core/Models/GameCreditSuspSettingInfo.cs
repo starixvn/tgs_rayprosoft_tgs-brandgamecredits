@@ -2,16 +2,16 @@
 
 namespace Tgs.BrandGameCredits.Core.Models;
 
-public record BrandGameCreditSuspSettingInfo(
+public record GameCreditSuspSettingInfo(
     Guid BrandId,
     decimal LowRisk,
-    JsonNode LowNotification,
+    string LowNotification,
     decimal ModerateRisk,
-    JsonNode ModerateNotification,
+    string ModerateNotification,
     decimal HighRisk,
-    JsonNode HighNotification,
+    string HighNotification,
     decimal Credit,
-    JsonNode CreditNotification,
-    JsonNode ManualNotification,
+    string CreditNotification,
+    string ManualNotification,
     DateTimeOffset CreatedOn,
     DateTimeOffset UpdatedOn);

@@ -1,4 +1,6 @@
-﻿using Tgs.ServiceUtility;
+﻿using System.Text.Json.Nodes;
+using Tgs.BrandGameCredits.Core.Expansions;
+using Tgs.ServiceUtility;
 
 namespace Tgs.BrandGameCredits.Core.ApplicationServices;
 
@@ -33,12 +35,12 @@ internal class GameCreditSuspSettingGetService(
             BrandId: brandInfo.BrandId,
             BrandCode: brandInfo.BrandCode,
             LowRisk: info.LowRisk,
-            LowNotification: info.LowNotification,
+            LowNotification: info.LowNotification.ToJsonNode(),
             ModerateRisk: info.ModerateRisk,
-            ModerateNotification: info.ModerateNotification,
+            ModerateNotification: info.ModerateNotification.ToJsonNode(),
             HighRisk: info.HighRisk,
-            HighNotification: info.HighNotification,
-            ManualNotification: info.ManualNotification,
+            HighNotification: info.HighNotification.ToJsonNode(),
+            ManualNotification: info.ManualNotification.ToJsonNode(),
             CreatedOn: info.CreatedOn,
             UpdatedOn: info.UpdatedOn);
     }

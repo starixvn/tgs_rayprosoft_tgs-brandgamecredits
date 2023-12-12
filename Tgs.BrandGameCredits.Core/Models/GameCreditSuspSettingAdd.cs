@@ -2,7 +2,7 @@
 
 namespace Tgs.BrandGameCredits.Core.Models;
 
-public record BrandGameCreditSuspSettingUpdate(
+public record GameCreditSuspSettingAdd(
     Guid BrandId,
     decimal LowRisk,
     JsonNode LowNotification,

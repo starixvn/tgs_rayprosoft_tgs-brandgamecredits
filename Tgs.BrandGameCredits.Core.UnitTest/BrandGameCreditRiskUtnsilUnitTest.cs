@@ -19,32 +19,32 @@ public class BrandGameCreditRiskUtnsilUnitTest
         var brandId = Guid.Empty;
         var creditUsedPer = 59.9999m;
 
-        var info = new BrandGameCreditSuspSettingInfo(
+        var info = new GameCreditSuspSettingInfo(
             BrandId: Guid.Empty,
             LowRisk: 60,
             LowNotification: new JsonObject
             {
-                ["Subject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
-            },
+                ["EmailSubject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
+            }.ToJsonString(),
             ModerateRisk: 80,
             ModerateNotification: new JsonObject
             {
-                ["Subject"] = "[Licensee][Brand] 緊急加值通知 Warning: Balance too low"
-            },
+                ["EmailSubject"] = "[Licensee][Brand] 緊急加值通知 Warning: Balance too low"
+            }.ToJsonString(),
             HighRisk: 95,
             HighNotification: new JsonObject
             {
-                ["Subject"] = "[Licensee][Brand] 平台已停用，請立即加值 Notice of Suspension"
-            },
+                ["EmailSubject"] = "[Licensee][Brand] 平台已停用，請立即加值 Notice of Suspension"
+            }.ToJsonString(),
             Credit: 0,
             CreditNotification: new JsonObject
             {
-                ["Subject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
-            },
+                ["EmailSubject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
+            }.ToJsonString(),
             ManualNotification: new JsonObject
             {
-                ["Subject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
-            },
+                ["EmailSubject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
+            }.ToJsonString(),
             CreatedOn: DateTimeOffset.UtcNow,
              UpdatedOn: DateTimeOffset.UtcNow);
 
@@ -68,32 +68,32 @@ public class BrandGameCreditRiskUtnsilUnitTest
         var brandId = Guid.Empty;
         var creditUsedPer = 79.9999m;
 
-        var info = new BrandGameCreditSuspSettingInfo(
+        var info = new GameCreditSuspSettingInfo(
             BrandId: Guid.Empty,
             LowRisk: 60,
             LowNotification: new JsonObject
             {
-                ["Subject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
-            },
+                ["EmailSubject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
+            }.ToJsonString(),
             ModerateRisk: 80,
             ModerateNotification: new JsonObject
             {
-                ["Subject"] = "[Licensee][Brand] 緊急加值通知 Warning: Balance too low"
-            },
+                ["EmailSubject"] = "[Licensee][Brand] 緊急加值通知 Warning: Balance too low"
+            }.ToJsonString(),
             HighRisk: 95,
             HighNotification: new JsonObject
             {
-                ["Subject"] = "[Licensee][Brand] 平台已停用，請立即加值 Notice of Suspension"
-            },
+                ["EmailSubject"] = "[Licensee][Brand] 平台已停用，請立即加值 Notice of Suspension"
+            }.ToJsonString(),
             Credit: 0,
             CreditNotification: new JsonObject
             {
-                ["Subject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
-            },
+                ["EmailSubject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
+            }.ToJsonString(),
             ManualNotification: new JsonObject
             {
-                ["Subject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
-            },
+                ["EmailSubject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
+            }.ToJsonString(),
             CreatedOn: DateTimeOffset.UtcNow,
              UpdatedOn: DateTimeOffset.UtcNow);
 
@@ -117,32 +117,32 @@ public class BrandGameCreditRiskUtnsilUnitTest
         var brandId = Guid.Empty;
         var creditUsedPer = 94.9999m;
 
-        var info = new BrandGameCreditSuspSettingInfo(
+        var info = new GameCreditSuspSettingInfo(
             BrandId: Guid.Empty,
             LowRisk: 60,
             LowNotification: new JsonObject
             {
-                ["Subject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
-            },
+                ["EmailSubject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
+            }.ToJsonString(),
             ModerateRisk: 80,
             ModerateNotification: new JsonObject
             {
-                ["Subject"] = "[Licensee][Brand] 緊急加值通知 Warning: Balance too low"
-            },
+                ["EmailSubject"] = "[Licensee][Brand] 緊急加值通知 Warning: Balance too low"
+            }.ToJsonString(),
             HighRisk: 95,
             HighNotification: new JsonObject
             {
-                ["Subject"] = "[Licensee][Brand] 平台已停用，請立即加值 Notice of Suspension"
-            },
+                ["EmailSubject"] = "[Licensee][Brand] 平台已停用，請立即加值 Notice of Suspension"
+            }.ToJsonString(),
             Credit: 0,
             CreditNotification: new JsonObject
             {
-                ["Subject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
-            },
+                ["EmailSubject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
+            }.ToJsonString(),
             ManualNotification: new JsonObject
             {
-                ["Subject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
-            },
+                ["EmailSubject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
+            }.ToJsonString(),
             CreatedOn: DateTimeOffset.UtcNow,
              UpdatedOn: DateTimeOffset.UtcNow);
 
@@ -166,32 +166,32 @@ public class BrandGameCreditRiskUtnsilUnitTest
         var brandId = Guid.Empty;
         var creditUsedPer = 95.0001m;
 
-        var info = new BrandGameCreditSuspSettingInfo(
+        var info = new GameCreditSuspSettingInfo(
             BrandId: Guid.Empty,
             LowRisk: 60,
             LowNotification: new JsonObject
             {
-                ["Subject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
-            },
+                ["EmailSubject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
+            }.ToJsonString(),
             ModerateRisk: 80,
             ModerateNotification: new JsonObject
             {
-                ["Subject"] = "[Licensee][Brand] 緊急加值通知 Warning: Balance too low"
-            },
+                ["EmailSubject"] = "[Licensee][Brand] 緊急加值通知 Warning: Balance too low"
+            }.ToJsonString(),
             HighRisk: 95,
             HighNotification: new JsonObject
             {
-                ["Subject"] = "[Licensee][Brand] 平台已停用，請立即加值 Notice of Suspension"
-            },
+                ["EmailSubject"] = "[Licensee][Brand] 平台已停用，請立即加值 Notice of Suspension"
+            }.ToJsonString(),
             Credit: 0,
             CreditNotification: new JsonObject
             {
-                ["Subject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
-            },
+                ["EmailSubject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
+            }.ToJsonString(),
             ManualNotification: new JsonObject
             {
-                ["Subject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
-            },
+                ["EmailSubject"] = "[Licensee][Brand] 加值通知 Warning: Balance low"
+            }.ToJsonString(),
             CreatedOn: DateTimeOffset.UtcNow,
              UpdatedOn: DateTimeOffset.UtcNow);
 

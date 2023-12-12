@@ -19,8 +19,7 @@ internal class GameCreditSuspSettingMergeCommandService(
             cancellationToken: cancellationToken)
             .ConfigureAwait(false) is null)
         {
-
-            var add = new BrandGameCreditSuspSettingAdd(
+            var add = new GameCreditSuspSettingAdd(
                 BrandId: brandInfo.BrandId,
                 LowRisk: command.LowRisk,
                 LowNotification: command.LowNotification,
@@ -37,7 +36,7 @@ internal class GameCreditSuspSettingMergeCommandService(
         }
         else
         {
-            var update = new BrandGameCreditSuspSettingUpdate(
+            var update = new GameCreditSuspSettingUpdate(
                 BrandId: brandInfo.BrandId,
                 LowRisk: command.LowRisk,
                 LowNotification: command.LowNotification,

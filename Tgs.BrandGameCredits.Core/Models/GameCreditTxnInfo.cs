@@ -2,14 +2,14 @@
 
 namespace Tgs.BrandGameCredits.Core.Models;
 
-public record BrandGameCreditTxnInfo(
+public record GameCreditTxnInfo(
     Guid Id,
     Guid BrandId,
     BrandGameCreditTxnTypes Type,
     decimal Money,
     decimal Amount,
     string Remark,
-    JsonNode Expansions,
+    string Expansions,
     Guid CreatedUserId,
     string CreatedUsername,
     DateTimeOffset CreatedOn);

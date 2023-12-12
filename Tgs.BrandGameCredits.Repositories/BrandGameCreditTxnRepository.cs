@@ -66,7 +66,7 @@ internal class BrandGameCreditTxnRepository(TgsContext context) : IBrandGameCred
             .ConfigureAwait(false);
     }
 
-    public IAsyncEnumerable<BrandGameCreditTxnInfo> QueryAsync(Guid brandId, BrandGameCreditTxnTypes? type, DateTimeOffset startOn, DateTimeOffset endOn, int offset = 0, int limit = 20, CancellationToken cancellationToken = default)
+    public IAsyncEnumerable<GameCreditTxnInfo> QueryAsync(Guid brandId, BrandGameCreditTxnTypes? type, DateTimeOffset startOn, DateTimeOffset endOn, int offset = 0, int limit = 20, CancellationToken cancellationToken = default)
     {
         var query = context.BrandGameCreditTxns.Where(predicate => predicate.CreatedOn >= startOn.UtcDateTime
              && predicate.CreatedOn < endOn.UtcDateTime
@@ -81,7 +81,7 @@ internal class BrandGameCreditTxnRepository(TgsContext context) : IBrandGameCred
          .OrderByDescending(keySelector: keySelector => keySelector.CreatedOn)
          .Skip(limit * offset)
          .Take(limit)
-         .Select(x => new BrandGameCreditTxnInfo(x.Id,
+         .Select(x => new GameCreditTxnInfo(x.Id,
              x.BrandId,
              (BrandGameCreditTxnTypes)x.Type,
              x.Money,

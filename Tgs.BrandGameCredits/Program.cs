@@ -52,6 +52,11 @@ builder.Services.AddBrandGameCredits(
     {
         var config = sp.GetRequiredService<IConfiguration>();
         _ = dbBuilder.UseNpgsql(config.GetConnectionString("Tgs"));
+    },
+    (options, sp) =>
+    {
+        var configuration = sp.GetRequiredService<IConfiguration>();
+        options.ConnectionString = configuration.GetConnectionString("Redis")!;
     });
 
 builder.Services

@@ -39,14 +39,14 @@ public class GameCreditTxnQueryServiceUnitTest
             Arg.Any<CancellationToken>())
             .Returns(brandInfo);
 
-        var brandGameCreditTxnInfo = new BrandGameCreditTxnInfo(
+        var brandGameCreditTxnInfo = new GameCreditTxnInfo(
             Id: Guid.NewGuid(),
             BrandId: Guid.Parse("4e86719f-243f-46f6-b010-5c758b7285af"),
             Type: BrandGameCreditTxnTypes.Credit,
             Money: 100m,
             Amount: 1000m,
             Remark: "text",
-            Expansions: new JsonObject { ["User"] = "test" },
+            Expansions: new JsonObject { ["User"] = "test" }.ToJsonString(),
             CreatedUserId: Guid.Parse("50ce61eb-8c9d-4f84-3cf6-08d9262ce1a5"),
             CreatedUsername: "admin.enabled",
             CreatedOn: DateTimeOffset.Parse("2023-12-06T10:23:22.533+08:00"));
@@ -58,7 +58,7 @@ public class GameCreditTxnQueryServiceUnitTest
             offset: Arg.Is(query.PageNumber - 1),
             limit: Arg.Is(query.PageSize),
             Arg.Any<CancellationToken>())
-            .Returns(new BrandGameCreditTxnInfo[] {
+            .Returns(new GameCreditTxnInfo[] {
                 brandGameCreditTxnInfo }.ToAsyncEnumerable());
 
         var service = new GameCreditTxnQueryService(
