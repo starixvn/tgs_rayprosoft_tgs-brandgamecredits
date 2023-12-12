@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 using System.Net.Mime;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using System.Web;
 using Tgs.BrandGameCredits.Common;
 using Tgs.BrandGameCredits.Common.Models;
@@ -60,6 +54,47 @@ internal class BrandGameCreditsClient(HttpClient httpClient) : IBrandGameCredits
             .Select(info => info!)
             .ToEnumerable()
             .ToAsyncEnumerable();
+    }
+
+    public async ValueTask<GameCreditSuspSetting> GameCreditSuspSettingGetAsync(string brandCode, CancellationToken cancellationToken = default)
+    {
+        var path = new Uri(httpClient.BaseAddress!, $"/api/gamecreditsuspsetting/{brandCode}");
+        var builder = new UriBuilder(path);
+        string url = builder.ToString();
+
+        return await httpClient.GetAsync(url, cancellationToken)
+            .ToAsyncEnumerable()
+            .Do(response => response.EnsureSuccessStatusCode())
+            .Where(response => response.StatusCode == System.Net.HttpStatusCode.OK)
+            .SelectMany(response => response.Content
+                .ReadFromJsonAsync<GameCreditSuspSetting>(_SerializerOptions, cancellationToken)
+                .ToAsyncEnumerable())
+            .FirstOrDefaultAsync(cancellationToken: cancellationToken)
+            ?? throw new NullReferenceException($"This brand does not exist.{brandCode}");
+    }
+    public async ValueTask GameCreditSuspSettingMergeAsync(string brandCode, decimal lowRisk, JsonNode lowNotification, decimal moderateRisk, JsonNode moderateNotification, decimal highRisk, JsonNode highNotification, JsonNode manualNotification, CancellationToken cancellationToken = default)
+    {
+        var add = new GameCreditSuspSettingMerge
+        {
+            BrandCode = brandCode,
+            LowRisk = lowRisk,
+            LowNotification = lowNotification,
+            ModerateRisk = moderateRisk,
+            ManualNotification = manualNotification,
+            HighRisk = highRisk,
+            HighNotification = highNotification,
+            ModerateNotification = moderateNotification
+        };
+        var path = new Uri(httpClient.BaseAddress!, $"/api/gamecreditsuspsetting/merge");
+        var builder = new UriBuilder(path);
+        string url = builder.ToString();
+        var httpContent = new StringContent(JsonSerializer.Serialize(add, _SerializerOptions), Encoding.UTF8, MediaTypeNames.Application.Json);
+
+        _ = await httpClient.PostAsync(url, httpContent, cancellationToken)
+            .ToAsyncEnumerable()
+           .Do(response => response.EnsureSuccessStatusCode())
+           .FirstAsync(cancellationToken: cancellationToken)
+           .ConfigureAwait(false);
     }
 
     public async ValueTask GameCreditTxnAddCreditAsync(string brandCode, decimal money, decimal amount, string remark, JsonNode expansions, Guid createdUserId, string createdUsername, CancellationToken cancellationToken = default)

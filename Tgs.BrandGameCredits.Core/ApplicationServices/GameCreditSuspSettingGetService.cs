@@ -1,0 +1,45 @@
+﻿using Tgs.ServiceUtility;
+
+namespace Tgs.BrandGameCredits.Core.ApplicationServices;
+
+internal class GameCreditSuspSettingGetService(
+    IBrandRepository brandRepository,
+    IBrandGameCreditSuspSettingRepository brandGameCreditSuspSettingRepository) : IGetService<GameCreditSuspSettingGetQuery, GameCreditSuspSettingResult>
+{
+
+    public async ValueTask<GameCreditSuspSettingResult> GetAsync(GameCreditSuspSettingGetQuery query, CancellationToken cancellationToken = default)
+    {
+        var brandInfo = await brandRepository.GetAsync(
+            code: query.BrandCode,
+            cancellationToken: cancellationToken)
+            .ConfigureAwait(false);
+
+        var info = await brandGameCreditSuspSettingRepository.GetAsync(
+            brandInfo.BrandId,
+            cancellationToken: cancellationToken)
+            .ConfigureAwait(false)
+            ?? await brandGameCreditSuspSettingRepository.GetAsync(
+                Guid.Empty,
+                cancellationToken: cancellationToken)
+            .ConfigureAwait(false)
+            ?? throw new NullReferenceException($"This brand does not exist.{query.BrandCode}");
+
+
+        return new GameCreditSuspSettingResult(
+            ResellerId: brandInfo.ResellerId,
+            ResellerCode: brandInfo.ResellerCode,
+            LicenseeId: brandInfo.LicenseeId,
+            LicenseeCode: brandInfo.LicenseeCode,
+            BrandId: brandInfo.BrandId,
+            BrandCode: brandInfo.BrandCode,
+            LowRisk: info.LowRisk,
+            LowNotification: info.LowNotification,
+            ModerateRisk: info.ModerateRisk,
+            ModerateNotification: info.ModerateNotification,
+            HighRisk: info.HighRisk,
+            HighNotification: info.HighNotification,
+            ManualNotification: info.ManualNotification,
+            CreatedOn: info.CreatedOn,
+            UpdatedOn: info.UpdatedOn);
+    }
+}
