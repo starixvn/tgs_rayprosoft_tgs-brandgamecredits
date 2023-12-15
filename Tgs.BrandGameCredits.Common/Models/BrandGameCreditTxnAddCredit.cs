@@ -3,7 +3,7 @@ using System.Text.Json.Nodes;
 
 namespace Tgs.BrandGameCredits.Common.Models;
 
-public class GameCreditTxnAddCredit
+public class BrandGameCreditTxnAddCredit
 {
     /// <summary>
     /// The brand code

@@ -2,7 +2,6 @@
 using Tgs.BrandGameCredits.Common;
 
 using Tgs.BrandGameCredits.Common.Models;
-using Tgs.BrandGameCredits.Core;
 using Tgs.BrandGameCredits.Core.ApplicationServices;
 using Tgs.ServiceUtility;
 
@@ -24,12 +23,12 @@ public class GameCreditTxnController : ControllerBase
     /// <param name="pageSize">Size of the page.</param>
     /// <returns></returns>
     [HttpGet("{brandCode}/query")]
-    public async IAsyncEnumerable<GameCreditTxn> QueryAsync(
+    public async IAsyncEnumerable<BrandGameCreditTxn> QueryAsync(
         [FromServices] IQueryService<GameCreditTxnQuery, GameCreditTxnResult> service,
         string brandCode,
         [FromQuery] DateTimeOffset startOn,
         [FromQuery] DateTimeOffset endOn,
-        [FromQuery] GameCreditTxnTypes? type,
+        [FromQuery] BrandGameCreditTxnTypes? type,
         [FromQuery] int pageNumber = 1,
         [FromQuery] int pageSize = 20)
     {
@@ -38,7 +37,7 @@ public class GameCreditTxnController : ControllerBase
                 BrandCode: brandCode,
                 StartOn: startOn,
                 EndOn: endOn,
-                Type: (BrandGameCreditTxnTypes?)type,
+                Type: type,
                 PageNumber: pageNumber,
                 PageSize: pageSize),
              cancellationToken: HttpContext.RequestAborted)
@@ -54,7 +53,7 @@ public class GameCreditTxnController : ControllerBase
 
         foreach (var result in results)
         {
-            yield return new GameCreditTxn(
+            yield return new BrandGameCreditTxn(
                 result.Id,
                 result.ResellerId,
                 result.ResellerCode,
@@ -62,7 +61,7 @@ public class GameCreditTxnController : ControllerBase
                 result.LicenseeCode,
                 result.BrandId,
                 result.BrandCode,
-                (GameCreditTxnTypes)result.Type,
+                result.Type,
                 result.Money,
                 result.Amount,
                 result.Remark,
@@ -122,7 +121,7 @@ public class GameCreditTxnController : ControllerBase
     [HttpPost("add/credit")]
     public ValueTask AddCreditAsync(
         [FromServices] ICommandService<GameCreditTxnAddCreditCommand> service,
-        GameCreditTxnAddCredit source)
+        BrandGameCreditTxnAddCredit source)
             => service.ExecuteAsync(
                 command: new GameCreditTxnAddCreditCommand(
                     BrandCode: source.BrandCode,
@@ -159,7 +158,7 @@ public class GameCreditTxnController : ControllerBase
     [HttpPost("add/debit")]
     public ValueTask AddDebitAsync(
         [FromServices] ICommandService<GameCreditTxnAddDebitCommand> service,
-        GameCreditTxnAddDebit source)
+        BrandGameCreditTxnAddDebit source)
         => service.ExecuteAsync(
             command: new GameCreditTxnAddDebitCommand(
                 BrandCode: source.BrandCode,

@@ -35,12 +35,12 @@ internal class GameCreditSuspSettingGetService(
             BrandId: brandInfo.BrandId,
             BrandCode: brandInfo.BrandCode,
             LowRisk: info.LowRisk,
-            LowNotification: info.LowNotification.ToJsonNode(),
+            LowNotification: info.LowNotification.ToGameCreditSuspSettingNotificationMsg(),
             ModerateRisk: info.ModerateRisk,
-            ModerateNotification: info.ModerateNotification.ToJsonNode(),
+            ModerateNotification: info.ModerateNotification.ToGameCreditSuspSettingNotificationMsg(),
             HighRisk: info.HighRisk,
-            HighNotification: info.HighNotification.ToJsonNode(),
-            ManualNotification: info.ManualNotification.ToJsonNode(),
+            HighNotification: info.HighNotification.ToGameCreditSuspSettingNotificationMsg(),
+            ManualNotification: info.ManualNotification.ToGameCreditSuspSettingNotificationMsg(),
             CreatedOn: info.CreatedOn,
             UpdatedOn: info.UpdatedOn);
     }

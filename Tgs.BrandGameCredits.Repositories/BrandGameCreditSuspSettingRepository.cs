@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Tgs.BrandGameCredits.Core;
+using Tgs.BrandGameCredits.Core.Expansions;
 using Tgs.BrandGameCredits.Core.Models;
 using Tgs.BrandGameCredits.Repositories.Entities;
 

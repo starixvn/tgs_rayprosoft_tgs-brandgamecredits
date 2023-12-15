@@ -1,4 +1,4 @@
-﻿namespace Tgs.BrandGameCredits.Core;
+﻿namespace Tgs.BrandGameCredits.Common;
 
 public enum BrandGameCreditRiskTypes
 {

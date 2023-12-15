@@ -1,4 +1,6 @@
-﻿namespace Tgs.BrandGameCredits.Core;
+﻿using Tgs.BrandGameCredits.Common;
+
+namespace Tgs.BrandGameCredits.Core;
 
 internal class BrandGameCreditRiskUtnsil(IBrandGameCreditSuspSettingRepository repository) : IBrandGameCreditRiskUtnsil
 {

@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Nodes;
+using Tgs.BrandGameCredits.Common;
 
 namespace Tgs.BrandGameCredits.Core.Models;
 

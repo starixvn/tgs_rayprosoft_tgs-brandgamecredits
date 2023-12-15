@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tgs.BrandGameCredits.Common.Models;
 
-public record GameCredit(
+public record BrandGameCredit(
     Guid ResellerId,
     string ResellerCode,
     Guid LicenseeId,
@@ -23,6 +23,6 @@ public record GameCredit(
     decimal CreditUsedPer,
     decimal CreditAvailable,
     decimal CreditAvailablePer,
-    GameCreditRiskTypes CreditRiskType,
+    BrandGameCreditRiskTypes CreditRiskType,
     DateTimeOffset CreatedOn,
     DateTimeOffset UpdatedOn);

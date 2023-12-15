@@ -2,7 +2,7 @@
 
 namespace Tgs.BrandGameCredits.Common.Models;
 
-public record GameCreditTxn(
+public record BrandGameCreditTxn(
     Guid Id,
     Guid ResellerId,
     string ResellerCode,
@@ -10,7 +10,7 @@ public record GameCreditTxn(
     string LicenseeCode,
     Guid BrandId,
     string BrandCode,
-    GameCreditTxnTypes Type,
+    BrandGameCreditTxnTypes Type,
     decimal Money,
     decimal Amount,
     string Remark,

@@ -25,7 +25,7 @@ public partial class BrandGameCreditsClientUnitTest
         var brandCode = "GPI";
         var startOn = new DateTimeOffset(2023, 12, 8, 00, 00, 00, TimeSpan.FromHours(8));
         var endOn = new DateTimeOffset(2023, 12, 9, 00, 00, 00, TimeSpan.FromHours(8));
-        var type = GameCreditTxnTypes.Credit;
+        var type = BrandGameCreditTxnTypes.Credit;
         var pageNumber = 1;
         var pageSize = 20;
 
@@ -82,7 +82,7 @@ public partial class BrandGameCreditsClientUnitTest
             pageNumber: pageNumber,
             pageSize: pageSize)
             .ToArrayAsync()
-            ?? Enumerable.Empty<GameCreditTxn>();
+            ?? Enumerable.Empty<BrandGameCreditTxn>();
 
         Assert.NotNull(actual);
         Assert.Equal(Guid.Parse("b5a2c708-ab70-4316-9f4d-5d2ad0e77460"), actual.First().ResellerId);
@@ -91,7 +91,7 @@ public partial class BrandGameCreditsClientUnitTest
         Assert.Equal("TGS", actual.First().LicenseeCode);
         Assert.Equal(Guid.Parse("4e86719f-243f-46f6-b010-5c758b7285af"), actual.First().BrandId);
         Assert.Equal("GPI", actual.First().BrandCode);
-        Assert.Equal(GameCreditTxnTypes.Credit, actual.First().Type);
+        Assert.Equal(BrandGameCreditTxnTypes.Credit, actual.First().Type);
         Assert.Equal(100m, actual.First().Money);
         Assert.Equal(1000m, actual.First().Amount);
         Assert.Equal("text", actual.First().Remark);
@@ -107,7 +107,7 @@ public partial class BrandGameCreditsClientUnitTest
         var brandCode = "GPI";
         var startOn = new DateTimeOffset(2023, 12, 8, 00, 00, 00, TimeSpan.FromHours(8));
         var endOn = new DateTimeOffset(2023, 12, 9, 00, 00, 00, TimeSpan.FromHours(8));
-        var type = (GameCreditTxnTypes?)null;
+        var type = (BrandGameCreditTxnTypes?)null;
         var pageNumber = 1;
         var pageSize = 20;
 
@@ -121,7 +121,7 @@ public partial class BrandGameCreditsClientUnitTest
                     BrandCode: brandCode,
                     StartOn: startOn,
                     EndOn: endOn,
-                    Type: (BrandGameCreditTxnTypes?)type,
+                    Type: type,
                     PageNumber: pageNumber,
                     PageSize: pageSize);
 
@@ -164,7 +164,7 @@ public partial class BrandGameCreditsClientUnitTest
             pageNumber: pageNumber,
             pageSize: pageSize)
             .ToArrayAsync()
-            ?? Enumerable.Empty<GameCreditTxn>();
+            ?? Enumerable.Empty<BrandGameCreditTxn>();
 
         Assert.NotNull(actual);
         Assert.Equal(Guid.Parse("b5a2c708-ab70-4316-9f4d-5d2ad0e77460"), actual.First().ResellerId);
@@ -173,7 +173,7 @@ public partial class BrandGameCreditsClientUnitTest
         Assert.Equal("TGS", actual.First().LicenseeCode);
         Assert.Equal(Guid.Parse("4e86719f-243f-46f6-b010-5c758b7285af"), actual.First().BrandId);
         Assert.Equal("GPI", actual.First().BrandCode);
-        Assert.Equal(GameCreditTxnTypes.Credit, actual.First().Type);
+        Assert.Equal(BrandGameCreditTxnTypes.Credit, actual.First().Type);
         Assert.Equal(100m, actual.First().Money);
         Assert.Equal(1000m, actual.First().Amount);
         Assert.Equal("text", actual.First().Remark);
@@ -189,7 +189,7 @@ public partial class BrandGameCreditsClientUnitTest
         var brandCode = "GPI";
         var startOn = new DateTimeOffset(2023, 12, 8, 00, 00, 00, TimeSpan.FromHours(8));
         var endOn = new DateTimeOffset(2023, 12, 9, 00, 00, 00, TimeSpan.FromHours(8));
-        var type = GameCreditTxnTypes.Credit;
+        var type = BrandGameCreditTxnTypes.Credit;
         var pageNumber = 1;
         var pageSize = 20;
 
@@ -230,7 +230,7 @@ public partial class BrandGameCreditsClientUnitTest
             pageNumber: pageNumber,
             pageSize: pageSize)
             .ToArrayAsync()
-            ?? Enumerable.Empty<GameCreditTxn>();
+            ?? Enumerable.Empty<BrandGameCreditTxn>();
 
         Assert.False(actual.Any());
     }
@@ -241,7 +241,7 @@ public partial class BrandGameCreditsClientUnitTest
         var brandCode = "GPI";
         var startOn = new DateTimeOffset(2023, 12, 8, 00, 00, 00, TimeSpan.FromHours(8));
         var endOn = new DateTimeOffset(2023, 12, 9, 00, 00, 00, TimeSpan.FromHours(8));
-        var type = GameCreditTxnTypes.Credit;
+        var type = BrandGameCreditTxnTypes.Credit;
 
         var web = new TestBrandGameCreditsApplication(builder =>
         {
@@ -285,7 +285,7 @@ public partial class BrandGameCreditsClientUnitTest
         var brandCode = "GPI";
         var startOn = new DateTimeOffset(2023, 12, 8, 00, 00, 00, TimeSpan.FromHours(8));
         var endOn = new DateTimeOffset(2023, 12, 9, 00, 00, 00, TimeSpan.FromHours(8));
-        var type = (GameCreditTxnTypes?)null;
+        var type = (BrandGameCreditTxnTypes?)null;
 
         var web = new TestBrandGameCreditsApplication(builder =>
         {
@@ -329,7 +329,7 @@ public partial class BrandGameCreditsClientUnitTest
         var brandCode = "GPI";
         var startOn = new DateTimeOffset(2023, 12, 8, 00, 00, 00, TimeSpan.FromHours(8));
         var endOn = new DateTimeOffset(2023, 12, 9, 00, 00, 00, TimeSpan.FromHours(8));
-        var type = GameCreditTxnTypes.Credit;
+        var type = BrandGameCreditTxnTypes.Credit;
 
         var web = new TestBrandGameCreditsApplication(builder =>
         {

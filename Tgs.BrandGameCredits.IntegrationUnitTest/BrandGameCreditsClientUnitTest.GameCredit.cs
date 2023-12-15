@@ -68,7 +68,7 @@ public partial class BrandGameCreditsClientUnitTest
         var actual = await client.GameCreditQueryAsync(
             brandCode: brandCode)
             .ToArrayAsync()
-            ?? Enumerable.Empty<GameCredit>();
+            ?? Enumerable.Empty<BrandGameCredit>();
 
         Assert.NotNull(actual);
         Assert.Equal(Guid.Parse("b5a2c708-ab70-4316-9f4d-5d2ad0e77460"), actual.First().ResellerId);
@@ -87,7 +87,7 @@ public partial class BrandGameCreditsClientUnitTest
         Assert.Equal(32.6733m, actual.First().CreditUsedPer);
         Assert.Equal(68m, actual.First().CreditAvailable);
         Assert.Equal(67.3267m, actual.First().CreditAvailablePer);
-        Assert.Equal(GameCreditRiskTypes.NormalRisk, actual.First().CreditRiskType);
+        Assert.Equal(BrandGameCreditRiskTypes.NormalRisk, actual.First().CreditRiskType);
         Assert.Equal(DateTimeOffset.Parse("2023-12-06T09:19:50.010516+00:00"), actual.First().CreatedOn);
         Assert.Equal(DateTimeOffset.Parse("2023-12-07T10:38:10.350982+00:00"), actual.First().UpdatedOn);
     }
@@ -123,7 +123,7 @@ public partial class BrandGameCreditsClientUnitTest
         var actual = await client.GameCreditQueryAsync(
             brandCode: brandCode)
             .ToArrayAsync()
-            ?? Enumerable.Empty<GameCredit>();
+            ?? Enumerable.Empty<BrandGameCredit>();
 
         Assert.False(actual.Any());
     }
@@ -194,7 +194,7 @@ public partial class BrandGameCreditsClientUnitTest
         Assert.Equal(32.6733m, actual.CreditUsedPer);
         Assert.Equal(68m, actual.CreditAvailable);
         Assert.Equal(67.3267m, actual.CreditAvailablePer);
-        Assert.Equal(GameCreditRiskTypes.NormalRisk, actual.CreditRiskType);
+        Assert.Equal(BrandGameCreditRiskTypes.NormalRisk, actual.CreditRiskType);
         Assert.Equal(DateTimeOffset.Parse("2023-12-06T09:19:50.010516+00:00"), actual.CreatedOn);
         Assert.Equal(DateTimeOffset.Parse("2023-12-07T10:38:10.350982+00:00"), actual.UpdatedOn);
     }

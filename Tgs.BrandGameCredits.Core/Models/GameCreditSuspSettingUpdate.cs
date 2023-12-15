@@ -1,13 +1,14 @@
 ﻿using System.Text.Json.Nodes;
+using Tgs.BrandGameCredits.Common.Models;
 
 namespace Tgs.BrandGameCredits.Core.Models;
 
 public record GameCreditSuspSettingUpdate(
     Guid BrandId,
     decimal LowRisk,
-    JsonNode LowNotification,
+    BrandGameCreditSuspSettingNotificationMsg LowNotification,
     decimal ModerateRisk,
-    JsonNode ModerateNotification,
+    BrandGameCreditSuspSettingNotificationMsg ModerateNotification,
     decimal HighRisk,
-    JsonNode HighNotification,
-    JsonNode ManualNotification);
+    BrandGameCreditSuspSettingNotificationMsg HighNotification,
+    BrandGameCreditSuspSettingNotificationMsg ManualNotification);

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Tgs.BrandGameCredits.Common.Models;
 
-public record GameCreditSuspSetting(
+public record BrandGameCreditSuspSetting(
     Guid ResellerId,
     string ResellerCode,
     Guid LicenseeId,
@@ -15,11 +15,11 @@ public record GameCreditSuspSetting(
     Guid BrandId,
     string BrandCode,
     decimal LowRisk,
-    JsonNode LowNotification,
+    BrandGameCreditSuspSettingNotificationMsg LowNotification,
     decimal ModerateRisk,
-    JsonNode ModerateNotification,
+    BrandGameCreditSuspSettingNotificationMsg ModerateNotification,
     decimal HighRisk,
-    JsonNode HighNotification,
-    JsonNode ManualNotification,
+    BrandGameCreditSuspSettingNotificationMsg HighNotification,
+    BrandGameCreditSuspSettingNotificationMsg ManualNotification,
     DateTimeOffset CreatedOn,
     DateTimeOffset UpdatedOn);

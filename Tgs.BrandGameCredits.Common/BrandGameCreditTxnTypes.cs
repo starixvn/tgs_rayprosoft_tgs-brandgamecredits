@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tgs.BrandGameCredits.Core;
+namespace Tgs.BrandGameCredits.Common;
 
 public enum BrandGameCreditTxnTypes
 {

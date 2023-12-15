@@ -1,4 +1,5 @@
-﻿using Tgs.BrandGameCredits.Core.Models;
+﻿using Tgs.BrandGameCredits.Core.Expansions;
+using Tgs.BrandGameCredits.Core.Models;
 using Tgs.ServiceUtility;
 
 namespace Tgs.BrandGameCredits.Core.ApplicationServices;

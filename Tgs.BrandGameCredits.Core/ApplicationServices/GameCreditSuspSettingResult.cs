@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
+using Tgs.BrandGameCredits.Common.Models;
 
 namespace Tgs.BrandGameCredits.Core.ApplicationServices;
 
@@ -15,11 +16,11 @@ public record GameCreditSuspSettingResult(
     Guid BrandId,
     string BrandCode,
     decimal LowRisk,
-    JsonNode LowNotification,
+    BrandGameCreditSuspSettingNotificationMsg LowNotification,
     decimal ModerateRisk,
-    JsonNode ModerateNotification,
+    BrandGameCreditSuspSettingNotificationMsg ModerateNotification,
     decimal HighRisk,
-    JsonNode HighNotification,
-    JsonNode ManualNotification,
+    BrandGameCreditSuspSettingNotificationMsg HighNotification,
+    BrandGameCreditSuspSettingNotificationMsg ManualNotification,
     DateTimeOffset CreatedOn,
     DateTimeOffset UpdatedOn);

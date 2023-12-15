@@ -22,7 +22,7 @@ public class GameCreditController : ControllerBase
     /// <param name="brandCode">The brand code.</param>
     /// <returns></returns>
     [HttpGet("{brandCode}/query")]
-    public async IAsyncEnumerable<GameCredit> QueryAsync(
+    public async IAsyncEnumerable<Common.Models.BrandGameCredit> QueryAsync(
         [FromServices] IQueryService<GameCreditQuery, GameCreditResult> service,
         string brandCode)
     {
@@ -42,7 +42,7 @@ public class GameCreditController : ControllerBase
 
         foreach (var result in results)
         {
-            yield return new GameCredit(
+            yield return new Common.Models.BrandGameCredit(
                 ResellerId: result.ResellerId,
                 ResellerCode: result.ResellerCode,
                 LicenseeId: result.LicenseeId,
@@ -59,7 +59,7 @@ public class GameCreditController : ControllerBase
                 CreditUsedPer: result.CreditUsedPer,
                 CreditAvailable: result.CreditAvailable,
                 CreditAvailablePer: result.CreditAvailablePer,
-                CreditRiskType: (GameCreditRiskTypes)result.CreditRiskType,
+                CreditRiskType: (BrandGameCreditRiskTypes)result.CreditRiskType,
                 CreatedOn: result.CreatedOn,
                 UpdatedOn: result.UpdatedOn);
         }
@@ -72,7 +72,7 @@ public class GameCreditController : ControllerBase
     /// <param name="brandCode">The brand code.</param>
     /// <returns></returns>
     [HttpGet("{brandCode}/current")]
-    public async ValueTask<GameCredit?> GetCurrentAsync(
+    public async ValueTask<Common.Models.BrandGameCredit?> GetCurrentAsync(
         [FromServices] IGetService<GameCreditGetCurrentQuery, GameCreditResult?> service,
         string brandCode)
     {
@@ -84,7 +84,7 @@ public class GameCreditController : ControllerBase
 
         return result is null
             ? null
-            : new GameCredit(
+            : new Common.Models.BrandGameCredit(
                 ResellerId: result.ResellerId,
                 ResellerCode: result.ResellerCode,
                 LicenseeId: result.LicenseeId,
@@ -101,7 +101,7 @@ public class GameCreditController : ControllerBase
                 CreditUsedPer: result.CreditUsedPer,
                 CreditAvailable: result.CreditAvailable,
                 CreditAvailablePer: result.CreditAvailablePer,
-                CreditRiskType: (GameCreditRiskTypes)result.CreditRiskType,
+                CreditRiskType: (BrandGameCreditRiskTypes)result.CreditRiskType,
                 CreatedOn: result.CreatedOn,
                 UpdatedOn: result.UpdatedOn);
     }

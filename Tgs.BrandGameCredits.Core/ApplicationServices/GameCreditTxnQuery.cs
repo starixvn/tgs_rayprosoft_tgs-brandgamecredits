@@ -1,4 +1,6 @@
-﻿namespace Tgs.BrandGameCredits.Core.ApplicationServices;
+﻿using Tgs.BrandGameCredits.Common;
+
+namespace Tgs.BrandGameCredits.Core.ApplicationServices;
 
 public record GameCreditTxnQuery(
      string BrandCode,

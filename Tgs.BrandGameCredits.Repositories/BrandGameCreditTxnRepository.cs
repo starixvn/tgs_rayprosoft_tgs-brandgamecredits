@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Tgs.BrandGameCredits.Common;
 using Tgs.BrandGameCredits.Core;
 using Tgs.BrandGameCredits.Core.Models;
 using Tgs.BrandGameCredits.Repositories.Entities;

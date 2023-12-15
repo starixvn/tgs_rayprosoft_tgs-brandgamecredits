@@ -21,7 +21,7 @@ internal class BrandGameCreditsClient(HttpClient httpClient) : IBrandGameCredits
         }
     };
 
-    public async ValueTask<GameCredit?> GameCreditGetCurrentAsync(string brandCode, CancellationToken cancellationToken = default)
+    public async ValueTask<BrandGameCredit?> GameCreditGetCurrentAsync(string brandCode, CancellationToken cancellationToken = default)
     {
         var path = new Uri(httpClient.BaseAddress!, $"/api/gamecredit/{brandCode}/current");
         var builder = new UriBuilder(path);
@@ -32,12 +32,12 @@ internal class BrandGameCreditsClient(HttpClient httpClient) : IBrandGameCredits
             .Do(response => response.EnsureSuccessStatusCode())
             .Where(response => response.StatusCode == System.Net.HttpStatusCode.OK)
             .SelectMany(response => response.Content
-                .ReadFromJsonAsync<GameCredit?>(_SerializerOptions, cancellationToken)
+                .ReadFromJsonAsync<BrandGameCredit?>(_SerializerOptions, cancellationToken)
                 .ToAsyncEnumerable())
             .FirstOrDefaultAsync(cancellationToken: cancellationToken);
     }
 
-    public IAsyncEnumerable<GameCredit> GameCreditQueryAsync(string brandCode, CancellationToken cancellationToken = default)
+    public IAsyncEnumerable<BrandGameCredit> GameCreditQueryAsync(string brandCode, CancellationToken cancellationToken = default)
     {
         var path = new Uri(httpClient.BaseAddress!, $"/api/gamecredit/{brandCode}/query");
         var builder = new UriBuilder(path);
@@ -47,7 +47,7 @@ internal class BrandGameCreditsClient(HttpClient httpClient) : IBrandGameCredits
             .ToAsyncEnumerable()
             .Do(response => response.EnsureSuccessStatusCode())
             .SelectMany(response => response.Content
-                .ReadFromJsonAsync<IEnumerable<GameCredit>>(_SerializerOptions, cancellationToken)
+                .ReadFromJsonAsync<IEnumerable<BrandGameCredit>>(_SerializerOptions, cancellationToken)
                 .ToAsyncEnumerable()
                 .SelectMany(arr => arr!.ToAsyncEnumerable()))
             .Where(info => info is not null)
@@ -56,7 +56,7 @@ internal class BrandGameCreditsClient(HttpClient httpClient) : IBrandGameCredits
             .ToAsyncEnumerable();
     }
 
-    public async ValueTask<GameCreditSuspSetting> GameCreditSuspSettingGetAsync(string brandCode, CancellationToken cancellationToken = default)
+    public async ValueTask<BrandGameCreditSuspSetting> GameCreditSuspSettingGetAsync(string brandCode, CancellationToken cancellationToken = default)
     {
         var path = new Uri(httpClient.BaseAddress!, $"/api/gamecreditsuspsetting/{brandCode}");
         var builder = new UriBuilder(path);
@@ -67,15 +67,15 @@ internal class BrandGameCreditsClient(HttpClient httpClient) : IBrandGameCredits
             .Do(response => response.EnsureSuccessStatusCode())
             .Where(response => response.StatusCode == System.Net.HttpStatusCode.OK)
             .SelectMany(response => response.Content
-                .ReadFromJsonAsync<GameCreditSuspSetting>(_SerializerOptions, cancellationToken)
+                .ReadFromJsonAsync<BrandGameCreditSuspSetting>(_SerializerOptions, cancellationToken)
                 .ToAsyncEnumerable())
             .FirstOrDefaultAsync(cancellationToken: cancellationToken)
             ?? throw new NullReferenceException($"This brand does not exist.{brandCode}");
     }
 
-    public async ValueTask GameCreditSuspSettingMergeAsync(string brandCode, decimal lowRisk, JsonNode lowNotification, decimal moderateRisk, JsonNode moderateNotification, decimal highRisk, JsonNode highNotification, JsonNode manualNotification, CancellationToken cancellationToken = default)
+    public async ValueTask GameCreditSuspSettingMergeAsync(string brandCode, decimal lowRisk, BrandGameCreditSuspSettingNotificationMsg lowNotification, decimal moderateRisk, BrandGameCreditSuspSettingNotificationMsg moderateNotification, decimal highRisk, BrandGameCreditSuspSettingNotificationMsg highNotification, BrandGameCreditSuspSettingNotificationMsg manualNotification, CancellationToken cancellationToken = default)
     {
-        var add = new GameCreditSuspSettingMerge
+        var add = new BrandGameCreditSuspSettingMerge
         {
             BrandCode = brandCode,
             LowRisk = lowRisk,
@@ -100,7 +100,7 @@ internal class BrandGameCreditsClient(HttpClient httpClient) : IBrandGameCredits
 
     public async ValueTask GameCreditTxnAddCreditAsync(string brandCode, decimal money, decimal amount, string remark, JsonNode expansions, Guid createdUserId, string createdUsername, CancellationToken cancellationToken = default)
     {
-        var add = new GameCreditTxnAddCredit
+        var add = new BrandGameCreditTxnAddCredit
         {
             BrandCode = brandCode,
             Money = money,
@@ -124,7 +124,7 @@ internal class BrandGameCreditsClient(HttpClient httpClient) : IBrandGameCredits
 
     public async ValueTask GameCreditTxnAddDebitAsync(string brandCode, decimal money, decimal amount, string remark, JsonNode expansions, Guid createdUserId, string createdUsername, CancellationToken cancellationToken = default)
     {
-        var add = new GameCreditTxnAddCredit
+        var add = new BrandGameCreditTxnAddCredit
         {
             BrandCode = brandCode,
             Money = money,
@@ -146,7 +146,7 @@ internal class BrandGameCreditsClient(HttpClient httpClient) : IBrandGameCredits
            .ConfigureAwait(false);
     }
 
-    public IAsyncEnumerable<GameCreditTxn> GameCreditTxnQueryAsync(string brandCode, DateTimeOffset startOn, DateTimeOffset endOn, GameCreditTxnTypes? type, int pageNumber = 1, int pageSize = 20, CancellationToken cancellationToken = default)
+    public IAsyncEnumerable<BrandGameCreditTxn> GameCreditTxnQueryAsync(string brandCode, DateTimeOffset startOn, DateTimeOffset endOn, BrandGameCreditTxnTypes? type, int pageNumber = 1, int pageSize = 20, CancellationToken cancellationToken = default)
     {
         var path = new Uri(httpClient.BaseAddress!, $"/api/gamecredittxn/{brandCode}/query");
         var builder = new UriBuilder(path);
@@ -166,7 +166,7 @@ internal class BrandGameCreditsClient(HttpClient httpClient) : IBrandGameCredits
             .ToAsyncEnumerable()
             .Do(response => response.EnsureSuccessStatusCode())
             .SelectMany(response => response.Content
-                .ReadFromJsonAsync<IEnumerable<GameCreditTxn>>(_SerializerOptions, cancellationToken)
+                .ReadFromJsonAsync<IEnumerable<BrandGameCreditTxn>>(_SerializerOptions, cancellationToken)
                 .ToAsyncEnumerable()
                 .SelectMany(arr => arr!.ToAsyncEnumerable()))
             .Where(info => info is not null)
@@ -175,7 +175,7 @@ internal class BrandGameCreditsClient(HttpClient httpClient) : IBrandGameCredits
             .ToAsyncEnumerable();
     }
 
-    public ValueTask<int> GameCreditTxnQueryCountAsync(string brandCode, DateTimeOffset startOn, DateTimeOffset endOn, GameCreditTxnTypes? type, CancellationToken cancellationToken = default)
+    public ValueTask<int> GameCreditTxnQueryCountAsync(string brandCode, DateTimeOffset startOn, DateTimeOffset endOn, BrandGameCreditTxnTypes? type, CancellationToken cancellationToken = default)
     {
         var path = new Uri(httpClient.BaseAddress!, $"/api/gamecredittxn/{brandCode}/query/count");
         var builder = new UriBuilder(path);
