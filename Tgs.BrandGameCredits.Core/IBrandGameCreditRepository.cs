@@ -6,5 +6,5 @@ public interface IBrandGameCreditRepository
 {
     public ValueTask<GameCreditInfo?> GetCurrentAsync(Guid brandId, CancellationToken cancellationToken = default);
 
-    public IAsyncEnumerable<GameCreditInfo> QueryAsync(Guid brandId, CancellationToken cancellationToken = default);
+    public IAsyncEnumerable<GameCreditInfo> HistoriesAsync(Guid brandId, CancellationToken cancellationToken = default);
 }

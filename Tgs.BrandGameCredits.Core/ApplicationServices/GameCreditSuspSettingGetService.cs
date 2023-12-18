@@ -8,7 +8,6 @@ internal class GameCreditSuspSettingGetService(
     IBrandRepository brandRepository,
     IBrandGameCreditSuspSettingRepository brandGameCreditSuspSettingRepository) : IGetService<GameCreditSuspSettingGetQuery, GameCreditSuspSettingResult>
 {
-
     public async ValueTask<GameCreditSuspSettingResult> GetAsync(GameCreditSuspSettingGetQuery query, CancellationToken cancellationToken = default)
     {
         var brandInfo = await brandRepository.GetAsync(
@@ -25,7 +24,6 @@ internal class GameCreditSuspSettingGetService(
                 cancellationToken: cancellationToken)
             .ConfigureAwait(false)
             ?? throw new NullReferenceException($"This brand does not exist.{query.BrandCode}");
-
 
         return new GameCreditSuspSettingResult(
             ResellerId: brandInfo.ResellerId,

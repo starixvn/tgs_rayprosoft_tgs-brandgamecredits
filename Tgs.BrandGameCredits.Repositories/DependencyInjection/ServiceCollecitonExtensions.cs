@@ -20,6 +20,7 @@ public static class ServiceCollecitonExtensions
         .AddTransient<IBrandGameCreditRepository, BrandGameCreditRepository>()
         .AddTransient<IBrandGameCreditTxnRepository, BrandGameCreditTxnRepository>()
         .AddTransient<IBrandRepository, BrandRepository>()
+        .AddTransient<IBrandGameCreditProfitRepository, BrandGameCreditProfitRepository>()
         .AddTransient<IBrandGameCreditSuspSettingRepository, BrandGameCreditSuspSettingRepository>()
         .Decorate<IBrandGameCreditSuspSettingRepository>((innerRepository, sp) => new BrandGameCreditSuspSettingCacheRepository(redisDatabaseResolver(sp), innerRepository, TimeSpan.FromMinutes(60)));
 }

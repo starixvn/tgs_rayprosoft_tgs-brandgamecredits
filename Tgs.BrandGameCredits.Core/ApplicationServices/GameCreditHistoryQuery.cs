@@ -1,4 +1,4 @@
 ﻿namespace Tgs.BrandGameCredits.Core.ApplicationServices;
 
-public record GameCreditQuery(
+public record GameCreditHistoryQuery(
      string BrandCode);

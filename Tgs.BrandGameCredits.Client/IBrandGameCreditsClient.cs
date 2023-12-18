@@ -6,7 +6,9 @@ namespace Tgs.BrandGameCredits.Client;
 
 public interface IBrandGameCreditsClient
 {
-    IAsyncEnumerable<BrandGameCredit> GameCreditQueryAsync(string brandCode, CancellationToken cancellationToken = default);
+    IAsyncEnumerable<BrandGameCreditProfit> GameCreditProfitQueryAsync(string brandCode, DateOnly month, CancellationToken cancellationToken = default);
+
+    IAsyncEnumerable<BrandGameCredit> GameCreditHistoriesAsync(string brandCode, CancellationToken cancellationToken = default);
 
     ValueTask<BrandGameCredit?> GameCreditGetCurrentAsync(string brandCode, CancellationToken cancellationToken = default);
 

@@ -23,7 +23,7 @@ internal class BrandGameCreditsClient(HttpClient httpClient) : IBrandGameCredits
 
     public async ValueTask<BrandGameCredit?> GameCreditGetCurrentAsync(string brandCode, CancellationToken cancellationToken = default)
     {
-        var path = new Uri(httpClient.BaseAddress!, $"/api/gamecredit/{brandCode}/current");
+        var path = new Uri(httpClient.BaseAddress!, $"/gamecredit/{brandCode}/current");
         var builder = new UriBuilder(path);
         string url = builder.ToString();
 
@@ -37,9 +37,9 @@ internal class BrandGameCreditsClient(HttpClient httpClient) : IBrandGameCredits
             .FirstOrDefaultAsync(cancellationToken: cancellationToken);
     }
 
-    public IAsyncEnumerable<BrandGameCredit> GameCreditQueryAsync(string brandCode, CancellationToken cancellationToken = default)
+    public IAsyncEnumerable<BrandGameCredit> GameCreditHistoriesAsync(string brandCode, CancellationToken cancellationToken = default)
     {
-        var path = new Uri(httpClient.BaseAddress!, $"/api/gamecredit/{brandCode}/query");
+        var path = new Uri(httpClient.BaseAddress!, $"/gamecredit/{brandCode}/histories");
         var builder = new UriBuilder(path);
         string url = builder.ToString();
 
@@ -56,9 +56,31 @@ internal class BrandGameCreditsClient(HttpClient httpClient) : IBrandGameCredits
             .ToAsyncEnumerable();
     }
 
+    public IAsyncEnumerable<BrandGameCreditProfit> GameCreditProfitQueryAsync(string brandCode, DateOnly month, CancellationToken cancellationToken = default)
+    {
+        var path = new Uri(httpClient.BaseAddress!, $"/gamecreditprofit/{brandCode}/query");
+        var builder = new UriBuilder(path);
+        var query = HttpUtility.ParseQueryString(builder.Query);
+        query["month"] = month.ToShortDateString();
+        builder.Query = query.ToString();
+        string url = builder.ToString();
+
+        return httpClient.GetAsync(url, cancellationToken)
+            .ToAsyncEnumerable()
+            .Do(response => response.EnsureSuccessStatusCode())
+            .SelectMany(response => response.Content
+                .ReadFromJsonAsync<IEnumerable<BrandGameCreditProfit>>(_SerializerOptions, cancellationToken)
+                .ToAsyncEnumerable()
+                .SelectMany(arr => arr!.ToAsyncEnumerable()))
+            .Where(info => info is not null)
+            .Select(info => info!)
+            .ToEnumerable()
+            .ToAsyncEnumerable();
+    }
+
     public async ValueTask<BrandGameCreditSuspSetting> GameCreditSuspSettingGetAsync(string brandCode, CancellationToken cancellationToken = default)
     {
-        var path = new Uri(httpClient.BaseAddress!, $"/api/gamecreditsuspsetting/{brandCode}");
+        var path = new Uri(httpClient.BaseAddress!, $"/gamecreditsuspsetting/{brandCode}");
         var builder = new UriBuilder(path);
         string url = builder.ToString();
 
@@ -86,7 +108,7 @@ internal class BrandGameCreditsClient(HttpClient httpClient) : IBrandGameCredits
             HighNotification = highNotification,
             ModerateNotification = moderateNotification
         };
-        var path = new Uri(httpClient.BaseAddress!, $"/api/gamecreditsuspsetting/merge");
+        var path = new Uri(httpClient.BaseAddress!, $"/gamecreditsuspsetting/merge");
         var builder = new UriBuilder(path);
         string url = builder.ToString();
         var httpContent = new StringContent(JsonSerializer.Serialize(add, _SerializerOptions), Encoding.UTF8, MediaTypeNames.Application.Json);
@@ -110,7 +132,7 @@ internal class BrandGameCreditsClient(HttpClient httpClient) : IBrandGameCredits
             CreatedUserId = createdUserId,
             CreatedUsername = createdUsername
         };
-        var path = new Uri(httpClient.BaseAddress!, $"/api/gamecredittxn/add/credit");
+        var path = new Uri(httpClient.BaseAddress!, $"/gamecredittxn/add/credit");
         var builder = new UriBuilder(path);
         string url = builder.ToString();
         var httpContent = new StringContent(JsonSerializer.Serialize(add, _SerializerOptions), Encoding.UTF8, MediaTypeNames.Application.Json);
@@ -134,7 +156,7 @@ internal class BrandGameCreditsClient(HttpClient httpClient) : IBrandGameCredits
             CreatedUserId = createdUserId,
             CreatedUsername = createdUsername
         };
-        var path = new Uri(httpClient.BaseAddress!, $"/api/gamecredittxn/add/debit");
+        var path = new Uri(httpClient.BaseAddress!, $"/gamecredittxn/add/debit");
         var builder = new UriBuilder(path);
         string url = builder.ToString();
         var httpContent = new StringContent(JsonSerializer.Serialize(add, _SerializerOptions), Encoding.UTF8, MediaTypeNames.Application.Json);
@@ -148,7 +170,7 @@ internal class BrandGameCreditsClient(HttpClient httpClient) : IBrandGameCredits
 
     public IAsyncEnumerable<BrandGameCreditTxn> GameCreditTxnQueryAsync(string brandCode, DateTimeOffset startOn, DateTimeOffset endOn, BrandGameCreditTxnTypes? type, int pageNumber = 1, int pageSize = 20, CancellationToken cancellationToken = default)
     {
-        var path = new Uri(httpClient.BaseAddress!, $"/api/gamecredittxn/{brandCode}/query");
+        var path = new Uri(httpClient.BaseAddress!, $"/gamecredittxn/{brandCode}/query");
         var builder = new UriBuilder(path);
         var query = HttpUtility.ParseQueryString(builder.Query);
         query["startOn"] = startOn.ToString("u");
@@ -177,7 +199,7 @@ internal class BrandGameCreditsClient(HttpClient httpClient) : IBrandGameCredits
 
     public ValueTask<int> GameCreditTxnQueryCountAsync(string brandCode, DateTimeOffset startOn, DateTimeOffset endOn, BrandGameCreditTxnTypes? type, CancellationToken cancellationToken = default)
     {
-        var path = new Uri(httpClient.BaseAddress!, $"/api/gamecredittxn/{brandCode}/query/count");
+        var path = new Uri(httpClient.BaseAddress!, $"/gamecredittxn/{brandCode}/query/count");
         var builder = new UriBuilder(path);
         var query = HttpUtility.ParseQueryString(builder.Query);
         query["startOn"] = startOn.ToString("u");

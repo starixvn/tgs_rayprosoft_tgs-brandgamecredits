@@ -7,7 +7,7 @@ using Tgs.ServiceUtility;
 
 namespace Tgs.BrandGameCredits.Controllers;
 
-[Route("api/[controller]")]
+[Route("[controller]")]
 [ApiController]
 public class GameCreditTxnController : ControllerBase
 {

@@ -11,7 +11,7 @@ using Tgs.BrandGameCredits.Common;
 
 namespace Tgs.BrandGameCredits.Controllers;
 
-[Route("api/[controller]")]
+[Route("[controller]")]
 [ApiController]
 public class GameCreditController : ControllerBase
 {
@@ -21,13 +21,13 @@ public class GameCreditController : ControllerBase
     /// <param name="service">The service.</param>
     /// <param name="brandCode">The brand code.</param>
     /// <returns></returns>
-    [HttpGet("{brandCode}/query")]
-    public async IAsyncEnumerable<Common.Models.BrandGameCredit> QueryAsync(
-        [FromServices] IQueryService<GameCreditQuery, GameCreditResult> service,
+    [HttpGet("{brandCode}/histories")]
+    public async IAsyncEnumerable<Common.Models.BrandGameCredit> HistoryQueryAsync(
+        [FromServices] IQueryService<GameCreditHistoryQuery, GameCreditResult> service,
         string brandCode)
     {
         var results = await service.QueryAsync(
-            query: new GameCreditQuery(
+            query: new GameCreditHistoryQuery(
                 BrandCode: brandCode),
             cancellationToken: HttpContext.RequestAborted)
              .ToArrayAsync(

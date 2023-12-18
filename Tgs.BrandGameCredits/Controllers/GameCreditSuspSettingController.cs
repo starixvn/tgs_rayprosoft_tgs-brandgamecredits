@@ -9,7 +9,7 @@ using Tgs.BrandGameCredits.Repositories.Entities;
 
 namespace Tgs.BrandGameCredits.Controllers;
 
-[Route("api/[controller]")]
+[Route("[controller]")]
 [ApiController]
 public class GameCreditSuspSettingController : ControllerBase
 {

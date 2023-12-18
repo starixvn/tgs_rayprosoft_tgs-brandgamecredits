@@ -18,7 +18,7 @@ namespace Tgs.BrandGameCredits.IntegrationUnitTest;
 public partial class BrandGameCreditsClientUnitTest
 {
     [Fact]
-    public async Task GameCredit_Query()
+    public async Task GameCredit_History_Query()
     {
         var brandCode = "GPI";
 
@@ -26,9 +26,9 @@ public partial class BrandGameCreditsClientUnitTest
         {
             _ = builder.ConfigureServices(services =>
             {
-                var fakeService = Substitute.For<IQueryService<GameCreditQuery, GameCreditResult>>();
+                var fakeService = Substitute.For<IQueryService<GameCreditHistoryQuery, GameCreditResult>>();
 
-                var query = new GameCreditQuery(brandCode);
+                var query = new GameCreditHistoryQuery(brandCode);
 
                 _ = fakeService.QueryAsync(
                     query: Arg.Is(query),
@@ -65,7 +65,7 @@ public partial class BrandGameCreditsClientUnitTest
 
         var client = new BrandGameCreditsClient(httpClient);
 
-        var actual = await client.GameCreditQueryAsync(
+        var actual = await client.GameCreditHistoriesAsync(
             brandCode: brandCode)
             .ToArrayAsync()
             ?? Enumerable.Empty<BrandGameCredit>();
@@ -93,7 +93,7 @@ public partial class BrandGameCreditsClientUnitTest
     }
 
     [Fact]
-    public async Task GameCredit_Query_No_Data()
+    public async Task GameCredit_History_Query_No_Data()
     {
         var brandCode = "GPI";
 
@@ -101,9 +101,9 @@ public partial class BrandGameCreditsClientUnitTest
         {
             _ = builder.ConfigureServices(services =>
             {
-                var fakeService = Substitute.For<IQueryService<GameCreditQuery, GameCreditResult>>();
+                var fakeService = Substitute.For<IQueryService<GameCreditHistoryQuery, GameCreditResult>>();
 
-                var query = new GameCreditQuery(brandCode);
+                var query = new GameCreditHistoryQuery(brandCode);
 
                 _ = fakeService.QueryAsync(
                     query: Arg.Is(query),
@@ -120,7 +120,7 @@ public partial class BrandGameCreditsClientUnitTest
 
         var client = new BrandGameCreditsClient(httpClient);
 
-        var actual = await client.GameCreditQueryAsync(
+        var actual = await client.GameCreditHistoriesAsync(
             brandCode: brandCode)
             .ToArrayAsync()
             ?? Enumerable.Empty<BrandGameCredit>();

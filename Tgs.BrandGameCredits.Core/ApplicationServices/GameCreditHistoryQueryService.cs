@@ -5,20 +5,20 @@ using Tgs.ServiceUtility;
 
 namespace Tgs.BrandGameCredits.Core.ApplicationServices;
 
-internal class GameCreditQueryService(
+internal class GameCreditHistoryQueryService(
     IBrandRepository brandRepository,
     IBrandGameCreditRepository brandGameCreditRepository,
     IBrandGameCreditComputingUtnsil computingUtnsil,
-    IBrandGameCreditRiskUtnsil riskUtnsil) : IQueryService<GameCreditQuery, GameCreditResult>
+    IBrandGameCreditRiskUtnsil riskUtnsil) : IQueryService<GameCreditHistoryQuery, GameCreditResult>
 {
-    public async IAsyncEnumerable<GameCreditResult> QueryAsync(GameCreditQuery query, [EnumeratorCancellation] CancellationToken cancellationToken = default)
+    public async IAsyncEnumerable<GameCreditResult> QueryAsync(GameCreditHistoryQuery query, [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         var brandInfo = await brandRepository.GetAsync(
             code: query.BrandCode,
             cancellationToken: cancellationToken)
             .ConfigureAwait(false);
 
-        var infos = await brandGameCreditRepository.QueryAsync(
+        var infos = await brandGameCreditRepository.HistoriesAsync(
             brandInfo.BrandId,
             cancellationToken: cancellationToken)
             .ToArrayAsync(

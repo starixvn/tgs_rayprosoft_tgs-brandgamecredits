@@ -5,52 +5,22 @@ using System.Collections.Generic;
 
 namespace Tgs.BrandGameCredits.Repositories.Entities;
 
-public partial class GameWagerStatDailyClose
+public partial class BrandGameCreditProfit
 {
-    /// <summary>
-    /// 公司識別碼
-    /// </summary>
-    public Guid ResellerId { get; set; }
-
-    /// <summary>
-    /// 分公司識別碼
-    /// </summary>
-    public Guid LicenseeId { get; set; }
-
     /// <summary>
     /// 平台識別碼
     /// </summary>
     public Guid BrandId { get; set; }
 
     /// <summary>
-    /// 玩家代碼
+    /// 月份
     /// </summary>
-    public string PlayerCode { get; set; } = null!;
+    public DateOnly Month { get; set; }
 
     /// <summary>
     /// 遊戲供應商識別碼
     /// </summary>
     public Guid GameProviderId { get; set; }
-
-    /// <summary>
-    /// 遊戲識別碼
-    /// </summary>
-    public int GameId { get; set; }
-
-    /// <summary>
-    /// 統計時間
-    /// </summary>
-    public DateTime StatOn { get; set; }
-
-    /// <summary>
-    /// 統計日時間
-    /// </summary>
-    public DateOnly StatDayOn { get; set; }
-
-    /// <summary>
-    /// 統計時間跨度
-    /// </summary>
-    public TimeSpan StatTimeSpan { get; set; }
 
     /// <summary>
     /// 筆數
@@ -88,12 +58,7 @@ public partial class GameWagerStatDailyClose
     public decimal WinLoss { get; set; }
 
     /// <summary>
-    /// 創建時間
+    /// 利潤額度
     /// </summary>
-    public DateTime CreatedOn { get; set; }
-
-    /// <summary>
-    /// 修改時間
-    /// </summary>
-    public DateTime UpdatedOn { get; set; }
+    public decimal ProfitAmount { get; set; }
 }

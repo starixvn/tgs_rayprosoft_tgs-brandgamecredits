@@ -18,11 +18,13 @@ public partial class TgsContext : DbContext
 
     public virtual DbSet<BrandGameCredit> BrandGameCredits { get; set; }
 
+    public virtual DbSet<BrandGameCreditProfit> BrandGameCreditProfits { get; set; }
+
     public virtual DbSet<BrandGameCreditSuspSetting> BrandGameCreditSuspSettings { get; set; }
 
     public virtual DbSet<BrandGameCreditTxn> BrandGameCreditTxns { get; set; }
 
-    public virtual DbSet<GameWagerStatDailyClose> GameWagerStatDailyCloses { get; set; }
+    public virtual DbSet<GameProvider> GameProviders { get; set; }
 
     public virtual DbSet<Licensee> Licensees { get; set; }
 
@@ -39,9 +41,10 @@ public partial class TgsContext : DbContext
 
         modelBuilder.ApplyConfiguration(new Configurations.BrandConfiguration());
         modelBuilder.ApplyConfiguration(new Configurations.BrandGameCreditConfiguration());
+        modelBuilder.ApplyConfiguration(new Configurations.BrandGameCreditProfitConfiguration());
         modelBuilder.ApplyConfiguration(new Configurations.BrandGameCreditSuspSettingConfiguration());
         modelBuilder.ApplyConfiguration(new Configurations.BrandGameCreditTxnConfiguration());
-        modelBuilder.ApplyConfiguration(new Configurations.GameWagerStatDailyCloseConfiguration());
+        modelBuilder.ApplyConfiguration(new Configurations.GameProviderConfiguration());
         modelBuilder.ApplyConfiguration(new Configurations.LicenseeConfiguration());
         modelBuilder.ApplyConfiguration(new Configurations.ResellerConfiguration());
         OnModelCreatingPartial(modelBuilder);

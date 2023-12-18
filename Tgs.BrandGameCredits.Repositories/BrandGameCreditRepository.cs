@@ -34,7 +34,7 @@ internal class BrandGameCreditRepository(TgsContext context,
             .ConfigureAwait(false);
     }
 
-    public IAsyncEnumerable<GameCreditInfo> QueryAsync(Guid brandId, CancellationToken cancellationToken = default)
+    public IAsyncEnumerable<GameCreditInfo> HistoriesAsync(Guid brandId, CancellationToken cancellationToken = default)
     {
         var monthTimeZone = timeUtnsil.Get1stOfEveryMonthTimeZone(systemClock.CurrentTime, 480);
         var monthDateOnly = timeUtnsil.Get1stOfEveryMonthDateOnly(monthTimeZone, 480);

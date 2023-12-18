@@ -7,7 +7,7 @@ using Tgs.BrandGameCredits.Handler.Common.Models;
 
 namespace Tgs.BrandGameCredits.Core.UnitTest.ApplicationServices;
 
-public class GameCreditQueryServiceUnitTest
+public class GameCreditHistoryQueryServiceUnitTest
 {
     [Fact]
     public async void Normal_Process()
@@ -17,7 +17,7 @@ public class GameCreditQueryServiceUnitTest
         var fakeComputingUtnsil = Substitute.For<IBrandGameCreditComputingUtnsil>();
         var fakeRiskUtnsil = Substitute.For<IBrandGameCreditRiskUtnsil>();
 
-        var query = new GameCreditQuery(
+        var query = new GameCreditHistoryQuery(
             BrandCode: "GPI");
 
         var brandInfo = new BrandInfo(
@@ -44,7 +44,7 @@ public class GameCreditQueryServiceUnitTest
             ProfitAmount: -33m,
             CreatedOn: DateTimeOffset.Parse("2023-12-06T09:19:50.010516+00:00"),
             UpdatedOn: DateTimeOffset.Parse("2023-12-07T10:38:10.350982+00:00"));
-        _ = fakeBrandGameCreditRepository.QueryAsync(
+        _ = fakeBrandGameCreditRepository.HistoriesAsync(
             Arg.Is(brandInfo.BrandId),
             Arg.Any<CancellationToken>())
             .Returns(new GameCreditInfo[] {
@@ -70,7 +70,7 @@ public class GameCreditQueryServiceUnitTest
             cancellationToken: Arg.Any<CancellationToken>())
             .Returns(riskType);
 
-        var service = new GameCreditQueryService(
+        var service = new GameCreditHistoryQueryService(
             fakeBrandRepository,
             fakeBrandGameCreditRepository,
             fakeComputingUtnsil,

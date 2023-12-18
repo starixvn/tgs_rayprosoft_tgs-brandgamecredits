@@ -20,6 +20,10 @@
   "T4TemplatePath": null,
   "Tables": [
     {
+      "Name": "dbo.brand_game_credit_profits",
+      "ObjectType": 0
+    },
+    {
       "Name": "dbo.brand_game_credit_susp_settings",
       "ObjectType": 0
     },
@@ -36,7 +40,7 @@
       "ObjectType": 0
     },
     {
-      "Name": "dbo.game_wager_stat_daily_closes",
+      "Name": "dbo.game_providers",
       "ObjectType": 0
     },
     {
