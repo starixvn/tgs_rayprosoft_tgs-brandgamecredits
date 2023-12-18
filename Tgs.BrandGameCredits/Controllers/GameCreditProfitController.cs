@@ -19,7 +19,7 @@ public class GameCreditProfitController : ControllerBase
     public async IAsyncEnumerable<Common.Models.BrandGameCreditProfit> QueryAsync(
         [FromServices] IQueryService<GameCreditProfitQuery, GameCreditProfitResult> service,
         string brandCode,
-        DateOnly month)
+        [FromQuery] DateOnly month)
     {
         var results = await service.QueryAsync(
             query: new GameCreditProfitQuery(
