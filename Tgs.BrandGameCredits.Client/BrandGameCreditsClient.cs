@@ -103,10 +103,10 @@ internal class BrandGameCreditsClient(HttpClient httpClient) : IBrandGameCredits
             LowRisk = lowRisk,
             LowNotification = lowNotification,
             ModerateRisk = moderateRisk,
-            ManualNotification = manualNotification,
+            ModerateNotification = moderateNotification,
             HighRisk = highRisk,
             HighNotification = highNotification,
-            ModerateNotification = moderateNotification
+            ManualNotification = manualNotification
         };
         var path = new Uri(httpClient.BaseAddress!, $"/gamecreditsuspsetting/merge");
         var builder = new UriBuilder(path);
