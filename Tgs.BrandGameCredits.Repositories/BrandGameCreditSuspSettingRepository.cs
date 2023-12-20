@@ -53,6 +53,7 @@ internal class BrandGameCreditSuspSettingRepository(TgsContext context) : IBrand
             ))
         .FirstOrDefaultAsync(cancellationToken: cancellationToken)
         .ConfigureAwait(false);
+    public ValueTask<GameCreditSuspSettingInfo> InitAsync(Guid brandId, CancellationToken cancellationToken = default) => throw new NotImplementedException();
 
     public async ValueTask UpdateAsync(GameCreditSuspSettingUpdate source, CancellationToken cancellationToken = default)
     {

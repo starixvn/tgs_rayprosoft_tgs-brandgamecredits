@@ -10,11 +10,10 @@ internal class BrandGameCreditRiskUtnsil(IBrandGameCreditSuspSettingRepository r
             brandId: brandId,
             cancellationToken: cancellationToken)
             .ConfigureAwait(false)
-            ?? await repository.GetAsync(
-                brandId: Guid.Empty,
+            ?? await repository.InitAsync(
+                brandId: brandId,
                 cancellationToken: cancellationToken)
-            .ConfigureAwait(false)
-            ?? throw new NullReferenceException($"This brand does not exist.{brandId}");
+            .ConfigureAwait(false);
 
         return settingInfo.HighRisk < creditUsedPer
             ? BrandGameCreditRiskTypes.HighRisk
