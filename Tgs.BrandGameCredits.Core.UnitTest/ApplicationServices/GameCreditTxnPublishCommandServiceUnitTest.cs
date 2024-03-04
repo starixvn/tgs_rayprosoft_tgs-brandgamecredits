@@ -8,6 +8,7 @@ using NSubstitute;
 using Tgs.BrandGameCredits.Core.ApplicationServices;
 using Tgs.BrandGameCredits.Core.Models;
 using Tgs.BrandGameCredits.Handler.Common;
+using Tgs.BrandGameCredits.Handler.Common.Protos;
 using Tgs.SerialNumberGenerator;
 using Tgs.ServiceUtility;
 using Valhalla.MessageQueue;
@@ -47,7 +48,7 @@ public class GameCreditTxnPublishCommandServiceUnitTest
             .Received(1)
             .PublishAsync(
             subject: Arg.Is(command.Subject),
-            data: Arg.Any<ReadOnlyMemory<byte>>(),
+            data: Arg.Any<BrandGameCreditPublish>(),
             Arg.Any<CancellationToken>());
     }
 }

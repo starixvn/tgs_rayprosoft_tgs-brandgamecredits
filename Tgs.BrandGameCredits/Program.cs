@@ -2,10 +2,12 @@
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NATS.Client.Core;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using Tgs.BrandGameCredits.Handler.Common;
+using Tgs.MessageQueue.Nats.Serializers;
 
 var filterInstrumentations = new[] { "html", "ico", "png", "jpg" };
 
@@ -59,13 +61,14 @@ builder.Services.AddBrandGameCredits(
     });
 
 builder.Services
+    .AddKeyedSingleton("Nats", (sp, _) => new NatsConnection(NatsOpts.Default with
+    {
+        Url = builder.Configuration.GetConnectionString("Nats")!,
+        SerializerRegistry = TgsNatsSerializerRegistration.Default
+    }))
     .AddMessageQueue()
     .AddNatsMessageQueue(config => config
-    .ConfigQueueOptions((options, sp) =>
-    {
-        var configuration = sp.GetRequiredService<IConfiguration>();
-        options.Url = configuration.GetConnectionString("Nats")!;
-    }))
+    .ConfigureResolveConnection(sp => sp.GetRequiredKeyedService<NatsConnection>("Nats")))
     .ClearAllExchanges()
     .AddNatsGlobPatternExchange(BrandGameCreditsHandlerNatsConst.Credit)
     .AddNatsGlobPatternExchange(BrandGameCreditsHandlerNatsConst.Debit);

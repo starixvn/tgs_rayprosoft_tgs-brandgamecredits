@@ -33,7 +33,7 @@ internal class GameCreditTxnPublishCommandService(
 
         return messageSender.PublishAsync(
             subject: command.Subject,
-            data: publish.ToByteArray(),
+            data: publish,
             cancellationToken: cancellationToken);
     }
 }
