@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
-using Tgs.BrandGameCredits.Repositories.Entities;
+using Tgs.BrandGameCredits.Entities;
 
 #nullable disable
 
-namespace Tgs.BrandGameCredits.Repositories.Entities.Configurations
+namespace Tgs.BrandGameCredits.Entities.Configurations
 {
     public partial class BrandConfiguration : IEntityTypeConfiguration<Brand>
     {
@@ -77,6 +77,12 @@ namespace Tgs.BrandGameCredits.Repositories.Entities.Configurations
             entity.Property(e => e.EnableEmailRegisterFlow)
             .HasDefaultValue(false)
             .HasColumnName("enable_email_register_flow");
+            entity.Property(e => e.EnablePlatformAccountFundCheck)
+            .HasDefaultValue(false)
+            .HasColumnName("enable_platform_account_fund_check");
+            entity.Property(e => e.EnablePlayerAgent)
+            .HasDefaultValue(false)
+            .HasColumnName("enable_player_agent");
             entity.Property(e => e.EnablePlayerIdentity)
             .HasDefaultValue(false)
             .HasColumnName("enable_player_identity");

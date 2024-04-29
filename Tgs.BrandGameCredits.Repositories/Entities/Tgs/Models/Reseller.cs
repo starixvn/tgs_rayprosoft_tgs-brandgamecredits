@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Tgs.BrandGameCredits.Repositories.Entities;
+namespace Tgs.BrandGameCredits.Entities;
 
 public partial class Reseller
 {

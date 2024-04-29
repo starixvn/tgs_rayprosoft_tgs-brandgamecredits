@@ -2,8 +2,8 @@
 
 public enum BrandGameCreditRiskTypes
 {
-    NormalRisk,
-    LowRisk,
-    ModerateRisk,
-    HighRisk
+	NormalRisk,
+	LowRisk,
+	ModerateRisk,
+	HighRisk
 }

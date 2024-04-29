@@ -3,10 +3,10 @@
 namespace Tgs.BrandGameCredits.Core.ApplicationServices;
 
 public record GameCreditTxnAddCreditCommand(
-    string BrandCode,
-    decimal Money,
-    decimal Amount,
-    string Remark,
-    JsonNode Expansions,
-    Guid CreatedUserId,
-    string CreatedUsername);
+	string BrandCode,
+	decimal Money,
+	decimal Amount,
+	string Remark,
+	JsonNode Expansions,
+	Guid CreatedUserId,
+	string CreatedUsername);

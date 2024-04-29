@@ -4,7 +4,7 @@ namespace Tgs.BrandGameCredits.Core;
 
 public interface IBrandGameCreditRepository
 {
-    public ValueTask<GameCreditInfo?> GetCurrentAsync(Guid brandId, CancellationToken cancellationToken = default);
+	public ValueTask<GameCreditInfo?> GetCurrentAsync(Guid brandId, CancellationToken cancellationToken = default);
 
-    public IAsyncEnumerable<GameCreditInfo> HistoriesAsync(Guid brandId, CancellationToken cancellationToken = default);
+	public IAsyncEnumerable<GameCreditInfo> HistoriesAsync(Guid brandId, CancellationToken cancellationToken = default);
 }

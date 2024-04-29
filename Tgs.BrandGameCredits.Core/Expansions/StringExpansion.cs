@@ -6,31 +6,31 @@ namespace Tgs.BrandGameCredits.Core.Expansions;
 
 public static class StringExpansion
 {
-    public static JsonNode ToJsonNode(this string jsonString)
-    {
-        try
-        {
-            return JsonNode.Parse(jsonString)!;
-        }
-        catch
-        {
-            return JsonNode.Parse("{}")!;
-        }
-    }
+	public static JsonNode ToJsonNode(this string jsonString)
+	{
+		try
+		{
+			return JsonNode.Parse(jsonString)!;
+		}
+		catch
+		{
+			return JsonNode.Parse("{}")!;
+		}
+	}
 
-    public static string ToJsonString(this BrandGameCreditSuspSettingNotificationMsg value)
-        => JsonSerializer.Serialize(value);
+	public static string ToJsonString(this BrandGameCreditSuspSettingNotificationMsg value)
+		=> JsonSerializer.Serialize(value);
 
-    public static BrandGameCreditSuspSettingNotificationMsg ToGameCreditSuspSettingNotificationMsg(this string jsonString)
-    {
-        try
-        {
-            return JsonSerializer.Deserialize<BrandGameCreditSuspSettingNotificationMsg>(jsonString)
-                ?? new BrandGameCreditSuspSettingNotificationMsg();
-        }
-        catch
-        {
-            return new BrandGameCreditSuspSettingNotificationMsg();
-        }
-    }
+	public static BrandGameCreditSuspSettingNotificationMsg ToGameCreditSuspSettingNotificationMsg(this string jsonString)
+	{
+		try
+		{
+			return JsonSerializer.Deserialize<BrandGameCreditSuspSettingNotificationMsg>(jsonString)
+				?? new BrandGameCreditSuspSettingNotificationMsg();
+		}
+		catch
+		{
+			return new BrandGameCreditSuspSettingNotificationMsg();
+		}
+	}
 }

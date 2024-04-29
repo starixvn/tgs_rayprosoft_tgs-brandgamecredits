@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Tgs.BrandGameCredits.Repositories.Entities;
+namespace Tgs.BrandGameCredits.Entities;
 
 public partial class Brand
 {
@@ -94,6 +94,10 @@ public partial class Brand
     public bool DepositPaymentLockEnabled { get; set; }
 
     public int? TimeSpanMinutes { get; set; }
+
+    public bool EnablePlayerAgent { get; set; }
+
+    public bool EnablePlatformAccountFundCheck { get; set; }
 
     public virtual Licensee Licensee { get; set; } = null!;
 }
