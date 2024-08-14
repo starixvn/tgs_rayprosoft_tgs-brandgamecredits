@@ -1,5 +1,7 @@
 ﻿using System.Net.Mime;
 using System.Text.Json.Serialization;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NATS.Client.Core;
@@ -112,6 +114,12 @@ _ = app.UseAuthorization();
 
 _ = app.MapControllers();
 
-app.MapHealthChecks("/healthz");
+app.MapHealthChecks(
+	"/health",
+	new HealthCheckOptions
+	{
+		Predicate = _ => true,
+		ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+	});
 
 app.Run();
